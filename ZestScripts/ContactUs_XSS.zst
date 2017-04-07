@@ -1,0 +1,287 @@
+{
+  "about": "This is a Zest script. For more details about Zest visit https://developer.mozilla.org/en-US/docs/Zest",
+  "zestVersion": "0.3",
+  "title": "ContactUs_XSS",
+  "description": "",
+  "prefix": "",
+  "type": "StandAlone",
+  "parameters": {
+    "tokenStart": "{{",
+    "tokenEnd": "}}",
+    "tokens": {},
+    "elementType": "ZestVariables"
+  },
+  "statements": [
+    {
+      "url": "http://localhost:8081/bodgeit",
+      "data": "",
+      "method": "GET",
+      "headers": "Proxy-Connection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n",
+      "response": {
+        "url": "http://localhost:8081/bodgeit",
+        "headers": "HTTP/1.1 302 Found\r\nServer: Apache-Coyote/1.1\r\nLocation: /bodgeit/\r\nDate: Fri, 07 Apr 2017 23:04:56 GMT\r\n\r\n",
+        "body": "",
+        "statusCode": 302,
+        "responseTimeInMs": 4,
+        "elementType": "ZestResponse"
+      },
+      "assertions": [
+        {
+          "rootExpression": {
+            "code": 302,
+            "not": false,
+            "elementType": "ZestExpressionStatusCode"
+          },
+          "elementType": "ZestAssertion"
+        },
+        {
+          "rootExpression": {
+            "length": 0,
+            "approx": 1,
+            "variableName": "response.body",
+            "not": false,
+            "elementType": "ZestExpressionLength"
+          },
+          "elementType": "ZestAssertion"
+        }
+      ],
+      "followRedirects": false,
+      "cookies": [],
+      "index": 1,
+      "enabled": true,
+      "elementType": "ZestRequest"
+    },
+    {
+      "url": "http://localhost:8081/bodgeit/",
+      "data": "",
+      "method": "GET",
+      "headers": "Proxy-Connection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n",
+      "response": {
+        "url": "http://localhost:8081/bodgeit/",
+        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nSet-Cookie: JSESSIONID\u003d79A0E064F3CA9E6B77860B5E22CE5396; Path\u003d/bodgeit; HttpOnly\r\nContent-Type: text/html;charset\u003dISO-8859-1\r\nContent-Length: 3262\r\nDate: Fri, 07 Apr 2017 23:04:56 GMT\r\n\r\n",
+        "body": "\n\n\n\n\r\n\n\n\n\n\n\u003c!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\"\u003e\n\u003chtml\u003e\n\u003chead\u003e\n\u003ctitle\u003eThe BodgeIt Store\u003c/title\u003e\n\u003clink href\u003d\"style.css\" rel\u003d\"stylesheet\" type\u003d\"text/css\" /\u003e\n\u003cscript type\u003d\"text/javascript\" src\u003d\"./js/util.js\"\u003e\u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n\u003ccenter\u003e\n\u003ctable width\u003d\"80%\" class\u003d\"border\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003cH1\u003eThe BodgeIt Store\u003c/H1\u003e\n\u003ctable width\u003d\"100%\" class\u003d\\\"noborder\\\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\"\u003e\u0026nbsp;\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"40%\"\u003eWe bodge it, so you dont have to!\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\" style\u003d\"text-align: right\" \u003e\nGuest user\r\n\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"home.jsp\"\u003eHome\u003c/a\u003e\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"about.jsp\"\u003eAbout Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"contact.jsp\"\u003eContact Us\u003c/a\u003e\u003c/td\u003e\n\u003c!-- td align\u003d\"center\" width\u003d\"16%\"\u003e\u003ca href\u003d\"admin.jsp\"\u003eAdmin\u003c/a\u003e\u003c/td--\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\n\n\t\t\u003ca href\u003d\"login.jsp\"\u003eLogin\u003c/a\u003e\n\n\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"basket.jsp\"\u003eYour Basket\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"search.jsp\"\u003eSearch\u003c/a\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003ctable width\u003d\"100%\" class\u003d\"border\"\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"left\" valign\u003d\"top\" width\u003d\"25%\"\u003e\n\u003ca href\u003d\"product.jsp?typeid\u003d6\"\u003eDoodahs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d5\"\u003eGizmos\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d3\"\u003eThingamajigs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d2\"\u003eThingies\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d7\"\u003eWhatchamacallits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d4\"\u003eWhatsits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d1\"\u003eWidgets\u003c/a\u003e\u003cbr/\u003e\r\n\n\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\n\u003c/td\u003e\n\u003ctd valign\u003d\"top\" width\u003d\"70%\"\u003e\n\n\n\u003ch3\u003eOur Best Deals!\u003c/h3\u003e\n\u003ccenter\u003e\u003ctable border\u003d\"1\" class\u003d\"border\" width\u003d\"80%\"\u003e\r\n\u003ctr\u003e\u003cth\u003eProduct\u003c/th\u003e\u003cth\u003eType\u003c/th\u003e\u003cth\u003ePrice\u003c/th\u003e\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d17\"\u003eWhatsit called\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eWhatsits\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e4,1 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d17\"\u003eWhatsit called\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eWhatsits\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e4,1 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d21\"\u003eWhatsit sound like\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eWhatsits\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e2,9 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d28\"\u003eBonzo dog doo dah\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eDoodahs\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e2,45 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d27\"\u003eDoo dah day\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eDoodahs\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e6,5 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d9\"\u003eTGJ AAA\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingamajigs\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e0,9 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d29\"\u003eTipofmytongue\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eWhatchamacallits\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e3,74 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d12\"\u003eTGJ CCD\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingamajigs\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e2,2 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d9\"\u003eTGJ AAA\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingamajigs\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e0,9 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d9\"\u003eTGJ AAA\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingamajigs\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e0,9 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003c/table\u003e\u003c/center\u003e\u003cbr/\u003e\r\n\n\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/center\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n\n\n",
+        "statusCode": 200,
+        "responseTimeInMs": 15,
+        "elementType": "ZestResponse"
+      },
+      "assertions": [
+        {
+          "rootExpression": {
+            "code": 200,
+            "not": false,
+            "elementType": "ZestExpressionStatusCode"
+          },
+          "elementType": "ZestAssertion"
+        },
+        {
+          "rootExpression": {
+            "length": 3262,
+            "approx": 5,
+            "variableName": "response.body",
+            "not": false,
+            "elementType": "ZestExpressionLength"
+          },
+          "elementType": "ZestAssertion"
+        }
+      ],
+      "followRedirects": false,
+      "cookies": [],
+      "index": 2,
+      "enabled": true,
+      "elementType": "ZestRequest"
+    },
+    {
+      "url": "http://localhost:8081/bodgeit/style.css",
+      "data": "",
+      "method": "GET",
+      "headers": "Proxy-Connection: keep-alive\r\n",
+      "response": {
+        "url": "http://localhost:8081/bodgeit/style.css",
+        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nAccept-Ranges: bytes\r\nETag: W/\"473-1491420824000\"\r\nLast-Modified: Wed, 05 Apr 2017 19:33:44 GMT\r\nContent-Type: text/css\r\nContent-Length: 473\r\nDate: Fri, 07 Apr 2017 23:04:56 GMT\r\n\r\n",
+        "body": "body {\n\tcolor:#333333;\n\tfont-family:Verdana,Helvetica,Arial,sans-serif;\n\tfont-size:62.5%;\n}\n\ntable.border {\n\tborder-width: thin;\n\tborder-spacing: 1px;\n\tborder-style: outset;\n\tborder-color: grey;\n\tborder-collapse: collapse;\n}\n\ntable.noborder {\n\tborder-width: 0px;\n\tborder-spacing: 0px;\n\tborder-style: outset;\n\tborder-color: grey;\n\tborder-collapse: collapse;\n}\ntable.noborder th {\n\tborder-width: 0px;\n\tpadding: 0px;\n}\ntable.noborder td {\n\tborder-width: 0px;\n\tpadding: 0px;\n}\n",
+        "statusCode": 200,
+        "responseTimeInMs": 5,
+        "elementType": "ZestResponse"
+      },
+      "assertions": [
+        {
+          "rootExpression": {
+            "code": 200,
+            "not": false,
+            "elementType": "ZestExpressionStatusCode"
+          },
+          "elementType": "ZestAssertion"
+        },
+        {
+          "rootExpression": {
+            "length": 473,
+            "approx": 5,
+            "variableName": "response.body",
+            "not": false,
+            "elementType": "ZestExpressionLength"
+          },
+          "elementType": "ZestAssertion"
+        }
+      ],
+      "followRedirects": false,
+      "cookies": [],
+      "index": 3,
+      "enabled": true,
+      "elementType": "ZestRequest"
+    },
+    {
+      "url": "http://localhost:8081/bodgeit/js/util.js",
+      "data": "",
+      "method": "GET",
+      "headers": "Proxy-Connection: keep-alive\r\n",
+      "response": {
+        "url": "http://localhost:8081/bodgeit/js/util.js",
+        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nAccept-Ranges: bytes\r\nETag: W/\"1812-1491420824000\"\r\nLast-Modified: Wed, 05 Apr 2017 19:33:44 GMT\r\nContent-Type: application/javascript\r\nContent-Length: 1812\r\nDate: Fri, 07 Apr 2017 23:04:56 GMT\r\n\r\n",
+        "body": "\nfunction loadfile(filename){\n var filetype \u003d filename.split(\u0027.\u0027).pop();\n switch (filetype){\n     case \"js\":\n         var insert\u003ddocument.createElement(\u0027script\u0027)\n         insert.setAttribute(\"type\",\"text/javascript\")\n         insert.setAttribute(\"src\", filename)\n         break;\n    case \u0027css\u0027:\n        var insert\u003ddocument.createElement(\"link\");\n        insert.setAttribute(\"type\", \"text/css\")\n        insert.setAttribute(\"href\", filename)\n        insert.setAttribute(\"rel\", \"stylesheet\")\n        break;\n }\n if (typeof insert!\u003d\"undefined\")\n  document.getElementsByTagName(\"head\")[0].appendChild(insert);\n return false;\n}\n\n\n////The following is from:\n//http://stackoverflow.com/questions/316781/how-to-build-query-string-with-javascript\n\nfunction form_to_params( form )\n{\n    var output \u003d \"\";\n    var length \u003d form.elements.length\n    for( var i \u003d 0; i \u003c length; i++ )\n    {\n        element \u003d form.elements[i]\n\n        if(element.tagName \u003d\u003d \u0027TEXTAREA\u0027 )\n        {\n                output +\u003d \"|\" + element.name + \":\" + element.value; \n        }\n        else if( element.tagName \u003d\u003d \u0027INPUT\u0027 )\n        {\n           switch(element.type){\n                case \u0027radio\u0027:\n                case \u0027checkbox\u0027:\n                    if(element.checked \u0026\u0026 !element.value){\n                        output +\u003d \"|\" + element.name + \":on\";\n                        break;\n                    }\n                case \u0027text\u0027:\n                case \u0027hidden\u0027:\n                case \u0027password\u0027:\n                    if(element.value)\n                        output +\u003d \"|\" + element.name + \":\" + element.value;\n                break;     \n          }\n        }\n    }\n    return output.substring(1);\n}\n\n\nfunction htmlEntities(str) {\n    return String(str).replace(/\u0026/g, \u0027\u0026amp;\u0027).replace(/\u003c/g, \u0027\u0026lt;\u0027).replace(/\u003e/g, \u0027\u0026gt;\u0027).replace(/\"/g, \u0027\u0026quot;\u0027);\n}",
+        "statusCode": 200,
+        "responseTimeInMs": 4,
+        "elementType": "ZestResponse"
+      },
+      "assertions": [
+        {
+          "rootExpression": {
+            "code": 200,
+            "not": false,
+            "elementType": "ZestExpressionStatusCode"
+          },
+          "elementType": "ZestAssertion"
+        },
+        {
+          "rootExpression": {
+            "length": 1812,
+            "approx": 5,
+            "variableName": "response.body",
+            "not": false,
+            "elementType": "ZestExpressionLength"
+          },
+          "elementType": "ZestAssertion"
+        }
+      ],
+      "followRedirects": false,
+      "cookies": [],
+      "index": 4,
+      "enabled": true,
+      "elementType": "ZestRequest"
+    },
+    {
+      "url": "http://localhost:8081/bodgeit/contact.jsp",
+      "data": "",
+      "method": "GET",
+      "headers": "Proxy-Connection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n",
+      "response": {
+        "url": "http://localhost:8081/bodgeit/contact.jsp",
+        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nContent-Type: text/html;charset\u003dISO-8859-1\r\nContent-Length: 2354\r\nDate: Fri, 07 Apr 2017 23:05:00 GMT\r\n\r\n",
+        "body": "\n\n\r\n\n\n\n\n\n\u003c!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\"\u003e\n\u003chtml\u003e\n\u003chead\u003e\n\u003ctitle\u003eThe BodgeIt Store\u003c/title\u003e\n\u003clink href\u003d\"style.css\" rel\u003d\"stylesheet\" type\u003d\"text/css\" /\u003e\n\u003cscript type\u003d\"text/javascript\" src\u003d\"./js/util.js\"\u003e\u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n\u003ccenter\u003e\n\u003ctable width\u003d\"80%\" class\u003d\"border\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003cH1\u003eThe BodgeIt Store\u003c/H1\u003e\n\u003ctable width\u003d\"100%\" class\u003d\\\"noborder\\\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\"\u003e\u0026nbsp;\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"40%\"\u003eWe bodge it, so you dont have to!\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\" style\u003d\"text-align: right\" \u003e\nGuest user\r\n\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"home.jsp\"\u003eHome\u003c/a\u003e\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"about.jsp\"\u003eAbout Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"contact.jsp\"\u003eContact Us\u003c/a\u003e\u003c/td\u003e\n\u003c!-- td align\u003d\"center\" width\u003d\"16%\"\u003e\u003ca href\u003d\"admin.jsp\"\u003eAdmin\u003c/a\u003e\u003c/td--\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\n\n\t\t\u003ca href\u003d\"login.jsp\"\u003eLogin\u003c/a\u003e\n\n\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"basket.jsp\"\u003eYour Basket\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"search.jsp\"\u003eSearch\u003c/a\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003ctable width\u003d\"100%\" class\u003d\"border\"\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"left\" valign\u003d\"top\" width\u003d\"25%\"\u003e\n\u003ca href\u003d\"product.jsp?typeid\u003d6\"\u003eDoodahs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d5\"\u003eGizmos\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d3\"\u003eThingamajigs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d2\"\u003eThingies\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d7\"\u003eWhatchamacallits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d4\"\u003eWhatsits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d1\"\u003eWidgets\u003c/a\u003e\u003cbr/\u003e\r\n\n\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\n\u003c/td\u003e\n\u003ctd valign\u003d\"top\" width\u003d\"70%\"\u003e\n\n\n\n\u003ch3\u003eContact Us\u003c/h3\u003e\nPlease send us your feedback: \u003cbr/\u003e\u003cbr/\u003e\n\u003cform method\u003d\"POST\"\u003e\n\t\u003cinput type\u003d\"hidden\" id\u003d\"user\" name\u003d\"null\" value\u003d\"\"/\u003e\n\t\u003cinput type\u003d\"hidden\" id\u003d\"anticsrf\" name\u003d\"anticsrf\" value\u003d\"0.6642797013402953\"\u003e\u003c/input\u003e\n\t\u003ccenter\u003e\n\t\u003ctable\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003e\u003ctextarea id\u003d\"comments\" name\u003d\"comments\" cols\u003d80 rows\u003d8\u003e\u003c/textarea\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003e\u003cinput id\u003d\"submit\" type\u003d\"submit\" value\u003d\"Submit\"\u003e\u003c/input\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003c/table\u003e\n\t\u003c/center\u003e\n\u003c/form\u003e\n\n\n\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/center\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n\n\n\n",
+        "statusCode": 200,
+        "responseTimeInMs": 4,
+        "elementType": "ZestResponse"
+      },
+      "assertions": [
+        {
+          "rootExpression": {
+            "code": 200,
+            "not": false,
+            "elementType": "ZestExpressionStatusCode"
+          },
+          "elementType": "ZestAssertion"
+        },
+        {
+          "rootExpression": {
+            "length": 2354,
+            "approx": 5,
+            "variableName": "response.body",
+            "not": false,
+            "elementType": "ZestExpressionLength"
+          },
+          "elementType": "ZestAssertion"
+        }
+      ],
+      "followRedirects": false,
+      "cookies": [],
+      "index": 5,
+      "enabled": true,
+      "elementType": "ZestRequest"
+    },
+    {
+      "fieldDefinition": {
+        "formIndex": 0,
+        "fieldName": "anticsrf",
+        "elementType": "ZestFieldDefinition"
+      },
+      "variableName": "csrf1",
+      "index": 6,
+      "enabled": true,
+      "elementType": "ZestAssignFieldValue"
+    },
+    {
+      "url": "http://localhost:8081/bodgeit/contact.jsp",
+      "data": "null\u003d\u0026anticsrf\u003d{{csrf1}}\u0026comments\u003d%3CScript%3Ealert%28%27XSSFound%27%29%3C%2FScript%3E",
+      "method": "POST",
+      "headers": "Proxy-Connection: keep-alive\r\nContent-Length: 95\r\nOrigin: http://localhost:8081\r\nUpgrade-Insecure-Requests: 1\r\nContent-Type: application/x-www-form-urlencoded\r\n",
+      "response": {
+        "url": "http://localhost:8081/bodgeit/contact.jsp",
+        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nContent-Type: text/html;charset\u003dISO-8859-1\r\nContent-Length: 2039\r\nDate: Fri, 07 Apr 2017 23:05:14 GMT\r\n\r\n",
+        "body": "\n\n\r\n\n\n\n\n\n\u003c!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\"\u003e\n\u003chtml\u003e\n\u003chead\u003e\n\u003ctitle\u003eThe BodgeIt Store\u003c/title\u003e\n\u003clink href\u003d\"style.css\" rel\u003d\"stylesheet\" type\u003d\"text/css\" /\u003e\n\u003cscript type\u003d\"text/javascript\" src\u003d\"./js/util.js\"\u003e\u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n\u003ccenter\u003e\n\u003ctable width\u003d\"80%\" class\u003d\"border\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003cH1\u003eThe BodgeIt Store\u003c/H1\u003e\n\u003ctable width\u003d\"100%\" class\u003d\\\"noborder\\\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\"\u003e\u0026nbsp;\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"40%\"\u003eWe bodge it, so you dont have to!\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\" style\u003d\"text-align: right\" \u003e\nGuest user\r\n\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"home.jsp\"\u003eHome\u003c/a\u003e\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"about.jsp\"\u003eAbout Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"contact.jsp\"\u003eContact Us\u003c/a\u003e\u003c/td\u003e\n\u003c!-- td align\u003d\"center\" width\u003d\"16%\"\u003e\u003ca href\u003d\"admin.jsp\"\u003eAdmin\u003c/a\u003e\u003c/td--\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\n\n\t\t\u003ca href\u003d\"login.jsp\"\u003eLogin\u003c/a\u003e\n\n\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"basket.jsp\"\u003eYour Basket\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"search.jsp\"\u003eSearch\u003c/a\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003ctable width\u003d\"100%\" class\u003d\"border\"\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"left\" valign\u003d\"top\" width\u003d\"25%\"\u003e\n\u003ca href\u003d\"product.jsp?typeid\u003d6\"\u003eDoodahs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d5\"\u003eGizmos\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d3\"\u003eThingamajigs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d2\"\u003eThingies\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d7\"\u003eWhatchamacallits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d4\"\u003eWhatsits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d1\"\u003eWidgets\u003c/a\u003e\u003cbr/\u003e\r\n\n\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\n\u003c/td\u003e\n\u003ctd valign\u003d\"top\" width\u003d\"70%\"\u003e\n\n\n\u003cbr/\u003e\u003cp style\u003d\"color:green\"\u003eThank you for your feedback:\u003c/p\u003e\u003cbr/\u003e\r\n\u003cbr/\u003e\u003ccenter\u003e\u003ctable border\u003d\"1\" width\u003d\"80%\" class\u003d\"border\"\u003e\r\n\u003ctr\u003e\u003ctd\u003e\u003cScript\u003ealert(\u0027XSSFound\u0027)\u003c/Script\u003e\u003c/td\u003e\u003c/tr\u003e\r\n\u003c/table\u003e\u003c/center\u003e\u003cbr/\u003e\r\n",
+        "statusCode": 200,
+        "responseTimeInMs": 8,
+        "elementType": "ZestResponse"
+      },
+      "assertions": [
+        {
+          "rootExpression": {
+            "code": 200,
+            "not": false,
+            "elementType": "ZestExpressionStatusCode"
+          },
+          "elementType": "ZestAssertion"
+        },
+        {
+          "rootExpression": {
+            "length": 2039,
+            "approx": 5,
+            "variableName": "response.body",
+            "not": false,
+            "elementType": "ZestExpressionLength"
+          },
+          "elementType": "ZestAssertion"
+        }
+      ],
+      "followRedirects": false,
+      "cookies": [],
+      "index": 7,
+      "enabled": true,
+      "elementType": "ZestRequest"
+    },
+    {
+      "rootExpression": {
+        "regex": "\\Q\u003cScript\u003ealert(\u0027XSSFound\u0027)\u003c/Script\u003e\\E",
+        "variableName": "response.body",
+        "caseExact": false,
+        "not": false,
+        "elementType": "ZestExpressionRegex"
+      },
+      "ifStatements": [
+        {
+          "message": "Found possible XSS in contact us form",
+          "priority": "HIGH",
+          "index": 9,
+          "enabled": true,
+          "elementType": "ZestActionFail"
+        }
+      ],
+      "elseStatements": [],
+      "index": 8,
+      "enabled": true,
+      "elementType": "ZestConditional"
+    }
+  ],
+  "authentication": [],
+  "index": 0,
+  "enabled": true,
+  "elementType": "ZestScript"
+}
