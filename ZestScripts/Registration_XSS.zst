@@ -1,0 +1,276 @@
+{
+  "about": "This is a Zest script. For more details about Zest visit https://developer.mozilla.org/en-US/docs/Zest",
+  "zestVersion": "0.3",
+  "title": "Registration_XSS",
+  "description": "",
+  "prefix": "",
+  "type": "StandAlone",
+  "parameters": {
+    "tokenStart": "{{",
+    "tokenEnd": "}}",
+    "tokens": {},
+    "elementType": "ZestVariables"
+  },
+  "statements": [
+    {
+      "url": "http://localhost:8081/bodgeit",
+      "data": "",
+      "method": "GET",
+      "headers": "Proxy-Connection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n",
+      "response": {
+        "url": "http://localhost:8081/bodgeit",
+        "headers": "HTTP/1.1 302 Found\r\nServer: Apache-Coyote/1.1\r\nLocation: /bodgeit/\r\nDate: Fri, 07 Apr 2017 17:22:35 GMT\r\n\r\n",
+        "body": "",
+        "statusCode": 302,
+        "responseTimeInMs": 120,
+        "elementType": "ZestResponse"
+      },
+      "assertions": [
+        {
+          "rootExpression": {
+            "code": 302,
+            "not": false,
+            "elementType": "ZestExpressionStatusCode"
+          },
+          "elementType": "ZestAssertion"
+        },
+        {
+          "rootExpression": {
+            "length": 0,
+            "approx": 1,
+            "variableName": "response.body",
+            "not": false,
+            "elementType": "ZestExpressionLength"
+          },
+          "elementType": "ZestAssertion"
+        }
+      ],
+      "followRedirects": false,
+      "cookies": [],
+      "index": 1,
+      "enabled": true,
+      "elementType": "ZestRequest"
+    },
+    {
+      "url": "http://localhost:8081/bodgeit/",
+      "data": "",
+      "method": "GET",
+      "headers": "Proxy-Connection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n",
+      "response": {
+        "url": "http://localhost:8081/bodgeit/",
+        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nContent-Type: text/html;charset\u003dISO-8859-1\r\nContent-Length: 3230\r\nDate: Fri, 07 Apr 2017 17:22:35 GMT\r\n\r\n",
+        "body": "\n\n\n\n\r\n\n\n\n\n\n\u003c!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\"\u003e\n\u003chtml\u003e\n\u003chead\u003e\n\u003ctitle\u003eThe BodgeIt Store\u003c/title\u003e\n\u003clink href\u003d\"style.css\" rel\u003d\"stylesheet\" type\u003d\"text/css\" /\u003e\n\u003cscript type\u003d\"text/javascript\" src\u003d\"./js/util.js\"\u003e\u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n\u003ccenter\u003e\n\u003ctable width\u003d\"80%\" class\u003d\"border\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003cH1\u003eThe BodgeIt Store\u003c/H1\u003e\n\u003ctable width\u003d\"100%\" class\u003d\\\"noborder\\\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\"\u003e\u0026nbsp;\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"40%\"\u003eWe bodge it, so you dont have to!\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\" style\u003d\"text-align: right\" \u003e\nGuest user\r\n\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"home.jsp\"\u003eHome\u003c/a\u003e\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"about.jsp\"\u003eAbout Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"contact.jsp\"\u003eContact Us\u003c/a\u003e\u003c/td\u003e\n\u003c!-- td align\u003d\"center\" width\u003d\"16%\"\u003e\u003ca href\u003d\"admin.jsp\"\u003eAdmin\u003c/a\u003e\u003c/td--\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\n\n\t\t\u003ca href\u003d\"login.jsp\"\u003eLogin\u003c/a\u003e\n\n\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"basket.jsp\"\u003eYour Basket\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"search.jsp\"\u003eSearch\u003c/a\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003ctable width\u003d\"100%\" class\u003d\"border\"\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"left\" valign\u003d\"top\" width\u003d\"25%\"\u003e\n\u003ca href\u003d\"product.jsp?typeid\u003d6\"\u003eDoodahs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d5\"\u003eGizmos\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d3\"\u003eThingamajigs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d2\"\u003eThingies\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d7\"\u003eWhatchamacallits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d4\"\u003eWhatsits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d1\"\u003eWidgets\u003c/a\u003e\u003cbr/\u003e\r\n\n\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\n\u003c/td\u003e\n\u003ctd valign\u003d\"top\" width\u003d\"70%\"\u003e\n\n\n\u003ch3\u003eOur Best Deals!\u003c/h3\u003e\n\u003ccenter\u003e\u003ctable border\u003d\"1\" class\u003d\"border\" width\u003d\"80%\"\u003e\r\n\u003ctr\u003e\u003cth\u003eProduct\u003c/th\u003e\u003cth\u003eType\u003c/th\u003e\u003cth\u003ePrice\u003c/th\u003e\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d19\"\u003eWhatsit feel like\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eWhatsits\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e3,95 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d32\"\u003eWhatnot\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eWhatchamacallits\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e2,68 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d24\"\u003eGZ FZ8\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eGizmos\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e1 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d20\"\u003eWhatsit taste like\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eWhatsits\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e3,96 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d13\"\u003eTGJ EFF\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingamajigs\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e3 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d12\"\u003eTGJ CCD\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingamajigs\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e2,2 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d7\"\u003eThingie 4\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingies\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e3,5 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d22\"\u003eGZ XT4\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eGizmos\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e4,45 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d25\"\u003eGZ K77\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eGizmos\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e3,05 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d10\"\u003eTGJ ABB\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingamajigs\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e1,4 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003c/table\u003e\u003c/center\u003e\u003cbr/\u003e\r\n\n\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/center\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n\n\n",
+        "statusCode": 200,
+        "responseTimeInMs": 57,
+        "elementType": "ZestResponse"
+      },
+      "assertions": [
+        {
+          "rootExpression": {
+            "code": 200,
+            "not": false,
+            "elementType": "ZestExpressionStatusCode"
+          },
+          "elementType": "ZestAssertion"
+        },
+        {
+          "rootExpression": {
+            "length": 3230,
+            "approx": 1,
+            "variableName": "response.body",
+            "not": false,
+            "elementType": "ZestExpressionLength"
+          },
+          "elementType": "ZestAssertion"
+        }
+      ],
+      "followRedirects": false,
+      "cookies": [],
+      "index": 2,
+      "enabled": true,
+      "elementType": "ZestRequest"
+    },
+    {
+      "url": "http://localhost:8081/bodgeit/login.jsp",
+      "data": "",
+      "method": "GET",
+      "headers": "Proxy-Connection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n",
+      "response": {
+        "url": "http://localhost:8081/bodgeit/login.jsp",
+        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nContent-Type: text/html;charset\u003dISO-8859-1\r\nContent-Length: 2453\r\nDate: Fri, 07 Apr 2017 17:22:40 GMT\r\n\r\n",
+        "body": "\r\n\r\n\r\n\r\n\r\n\r\n\n\n\n\n\u003c!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\"\u003e\n\u003chtml\u003e\n\u003chead\u003e\n\u003ctitle\u003eThe BodgeIt Store\u003c/title\u003e\n\u003clink href\u003d\"style.css\" rel\u003d\"stylesheet\" type\u003d\"text/css\" /\u003e\n\u003cscript type\u003d\"text/javascript\" src\u003d\"./js/util.js\"\u003e\u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n\u003ccenter\u003e\n\u003ctable width\u003d\"80%\" class\u003d\"border\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003cH1\u003eThe BodgeIt Store\u003c/H1\u003e\n\u003ctable width\u003d\"100%\" class\u003d\\\"noborder\\\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\"\u003e\u0026nbsp;\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"40%\"\u003eWe bodge it, so you dont have to!\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\" style\u003d\"text-align: right\" \u003e\nGuest user\r\n\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"home.jsp\"\u003eHome\u003c/a\u003e\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"about.jsp\"\u003eAbout Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"contact.jsp\"\u003eContact Us\u003c/a\u003e\u003c/td\u003e\n\u003c!-- td align\u003d\"center\" width\u003d\"16%\"\u003e\u003ca href\u003d\"admin.jsp\"\u003eAdmin\u003c/a\u003e\u003c/td--\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\n\n\t\t\u003ca href\u003d\"login.jsp\"\u003eLogin\u003c/a\u003e\n\n\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"basket.jsp\"\u003eYour Basket\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"search.jsp\"\u003eSearch\u003c/a\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003ctable width\u003d\"100%\" class\u003d\"border\"\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"left\" valign\u003d\"top\" width\u003d\"25%\"\u003e\n\u003ca href\u003d\"product.jsp?typeid\u003d6\"\u003eDoodahs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d5\"\u003eGizmos\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d3\"\u003eThingamajigs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d2\"\u003eThingies\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d7\"\u003eWhatchamacallits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d4\"\u003eWhatsits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d1\"\u003eWidgets\u003c/a\u003e\u003cbr/\u003e\r\n\n\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\n\u003c/td\u003e\n\u003ctd valign\u003d\"top\" width\u003d\"70%\"\u003e\n\r\n\r\n\u003ch3\u003eLogin\u003c/h3\u003e\r\nPlease enter your credentials: \u003cbr/\u003e\u003cbr/\u003e\r\n\u003cform method\u003d\"POST\"\u003e\r\n\t\u003ccenter\u003e\r\n\t\u003ctable\u003e\r\n\t\u003ctr\u003e\r\n\t\t\u003ctd\u003eUsername:\u003c/td\u003e\r\n\t\t\u003ctd\u003e\u003cinput id\u003d\"username\" name\u003d\"username\"/\u003e\u003c/td\u003e\r\n\t\u003c/tr\u003e\r\n\t\u003ctr\u003e\r\n\t\t\u003ctd\u003ePassword:\u003c/td\u003e\r\n\t\t\u003ctd\u003e\u003cinput id\u003d\"password\" name\u003d\"password\" type\u003d\"password\"/\u003e\u003c/td\u003e\r\n\t\u003c/tr\u003e\r\n\t\u003ctr\u003e\r\n\t\t\u003ctd\u003e\u003c/td\u003e\r\n\t\t\u003ctd\u003e\u003cinput id\u003d\"submit\" type\u003d\"submit\" value\u003d\"Login\"/\u003e\u003c/td\u003e\r\n\t\u003c/tr\u003e\r\n\t\u003c/table\u003e\r\n\t\u003c/center\u003e\r\n\u003c/form\u003e\r\nIf you dont have an account with us then please \u003ca href\u003d\"register.jsp\"\u003eRegister\u003c/a\u003e now for a free account.\r\n\u003cbr/\u003e\u003cbr/\u003e\r\n\r\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/center\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n\r\n\r\n",
+        "statusCode": 200,
+        "responseTimeInMs": 10,
+        "elementType": "ZestResponse"
+      },
+      "assertions": [
+        {
+          "rootExpression": {
+            "code": 200,
+            "not": false,
+            "elementType": "ZestExpressionStatusCode"
+          },
+          "elementType": "ZestAssertion"
+        },
+        {
+          "rootExpression": {
+            "length": 2453,
+            "approx": 1,
+            "variableName": "response.body",
+            "not": false,
+            "elementType": "ZestExpressionLength"
+          },
+          "elementType": "ZestAssertion"
+        }
+      ],
+      "followRedirects": false,
+      "cookies": [],
+      "index": 3,
+      "enabled": true,
+      "elementType": "ZestRequest"
+    },
+    {
+      "url": "http://localhost:8081/bodgeit/register.jsp",
+      "data": "",
+      "method": "GET",
+      "headers": "Proxy-Connection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n",
+      "response": {
+        "url": "http://localhost:8081/bodgeit/register.jsp",
+        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nContent-Type: text/html;charset\u003dISO-8859-1\r\nContent-Length: 2496\r\nDate: Fri, 07 Apr 2017 17:22:45 GMT\r\n\r\n",
+        "body": "\n\n\r\n\n\n\n\n\n\n\n\n\u003c!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\"\u003e\n\u003chtml\u003e\n\u003chead\u003e\n\u003ctitle\u003eThe BodgeIt Store\u003c/title\u003e\n\u003clink href\u003d\"style.css\" rel\u003d\"stylesheet\" type\u003d\"text/css\" /\u003e\n\u003cscript type\u003d\"text/javascript\" src\u003d\"./js/util.js\"\u003e\u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n\u003ccenter\u003e\n\u003ctable width\u003d\"80%\" class\u003d\"border\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003cH1\u003eThe BodgeIt Store\u003c/H1\u003e\n\u003ctable width\u003d\"100%\" class\u003d\\\"noborder\\\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\"\u003e\u0026nbsp;\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"40%\"\u003eWe bodge it, so you dont have to!\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\" style\u003d\"text-align: right\" \u003e\nGuest user\r\n\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"home.jsp\"\u003eHome\u003c/a\u003e\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"about.jsp\"\u003eAbout Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"contact.jsp\"\u003eContact Us\u003c/a\u003e\u003c/td\u003e\n\u003c!-- td align\u003d\"center\" width\u003d\"16%\"\u003e\u003ca href\u003d\"admin.jsp\"\u003eAdmin\u003c/a\u003e\u003c/td--\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\n\n\t\t\u003ca href\u003d\"login.jsp\"\u003eLogin\u003c/a\u003e\n\n\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"basket.jsp\"\u003eYour Basket\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"search.jsp\"\u003eSearch\u003c/a\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003ctable width\u003d\"100%\" class\u003d\"border\"\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"left\" valign\u003d\"top\" width\u003d\"25%\"\u003e\n\u003ca href\u003d\"product.jsp?typeid\u003d6\"\u003eDoodahs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d5\"\u003eGizmos\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d3\"\u003eThingamajigs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d2\"\u003eThingies\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d7\"\u003eWhatchamacallits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d4\"\u003eWhatsits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d1\"\u003eWidgets\u003c/a\u003e\u003cbr/\u003e\r\n\n\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\n\u003c/td\u003e\n\u003ctd valign\u003d\"top\" width\u003d\"70%\"\u003e\n\n\u003ch3\u003eRegister\u003c/h3\u003e\n\n\nPlease enter the following details to register with us: \u003cbr/\u003e\u003cbr/\u003e\n\u003cform method\u003d\"POST\"\u003e\n\t\u003ccenter\u003e\n\t\u003ctable\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003eUsername (your email address):\u003c/td\u003e\n\t\t\u003ctd\u003e\u003cinput id\u003d\"username\" name\u003d\"username\"\u003e\u003c/input\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003ePassword:\u003c/td\u003e\n\t\t\u003ctd\u003e\u003cinput id\u003d\"password1\" name\u003d\"password1\" type\u003d\"password\"\u003e\u003c/input\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003eConfirm Password:\u003c/td\u003e\n\t\t\u003ctd\u003e\u003cinput id\u003d\"password2\" name\u003d\"password2\" type\u003d\"password\"\u003e\u003c/input\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003e\u003c/td\u003e\n\t\t\u003ctd\u003e\u003cinput id\u003d\"submit\" type\u003d\"submit\" value\u003d\"Register\"\u003e\u003c/input\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003c/table\u003e\n\t\u003c/center\u003e\n\u003c/form\u003e\n\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/center\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n\n\n",
+        "statusCode": 200,
+        "responseTimeInMs": 16,
+        "elementType": "ZestResponse"
+      },
+      "assertions": [
+        {
+          "rootExpression": {
+            "code": 200,
+            "not": false,
+            "elementType": "ZestExpressionStatusCode"
+          },
+          "elementType": "ZestAssertion"
+        },
+        {
+          "rootExpression": {
+            "length": 2496,
+            "approx": 1,
+            "variableName": "response.body",
+            "not": false,
+            "elementType": "ZestExpressionLength"
+          },
+          "elementType": "ZestAssertion"
+        }
+      ],
+      "followRedirects": false,
+      "cookies": [],
+      "index": 4,
+      "enabled": true,
+      "elementType": "ZestRequest"
+    },
+    {
+      "url": "http://localhost:8081/bodgeit/register.jsp",
+      "data": "username\u003d%3Cscript%3Ealert%28%22XSSInRegistration%22%29%3B%3C%2Fscript%3E%40gmail.com\u0026password1\u003dpassword\u0026password2\u003dpassword",
+      "method": "POST",
+      "headers": "Proxy-Connection: keep-alive\r\nContent-Length: 123\r\nOrigin: http://localhost:8081\r\nUpgrade-Insecure-Requests: 1\r\nContent-Type: application/x-www-form-urlencoded\r\n",
+      "response": {
+        "url": "http://localhost:8081/bodgeit/register.jsp",
+        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nContent-Type: text/html;charset\u003dISO-8859-1\r\nContent-Length: 2067\r\nDate: Fri, 07 Apr 2017 17:23:32 GMT\r\n\r\n",
+        "body": "\n\n\r\n\n\n\n\n\n\n\n\n\u003c!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\"\u003e\n\u003chtml\u003e\n\u003chead\u003e\n\u003ctitle\u003eThe BodgeIt Store\u003c/title\u003e\n\u003clink href\u003d\"style.css\" rel\u003d\"stylesheet\" type\u003d\"text/css\" /\u003e\n\u003cscript type\u003d\"text/javascript\" src\u003d\"./js/util.js\"\u003e\u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n\u003ccenter\u003e\n\u003ctable width\u003d\"80%\" class\u003d\"border\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003cH1\u003eThe BodgeIt Store\u003c/H1\u003e\n\u003ctable width\u003d\"100%\" class\u003d\\\"noborder\\\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\"\u003e\u0026nbsp;\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"40%\"\u003eWe bodge it, so you dont have to!\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\" style\u003d\"text-align: right\" \u003e\nUser: \u003ca href\u003d\"password.jsp\"\u003e\u003cscript\u003ealert(\"XSSInRegistration\");\u003c/script\u003e@gmail.com\u003c/a\u003e\r\n\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"home.jsp\"\u003eHome\u003c/a\u003e\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"about.jsp\"\u003eAbout Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"contact.jsp\"\u003eContact Us\u003c/a\u003e\u003c/td\u003e\n\u003c!-- td align\u003d\"center\" width\u003d\"16%\"\u003e\u003ca href\u003d\"admin.jsp\"\u003eAdmin\u003c/a\u003e\u003c/td--\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\n\n\t\t\u003ca href\u003d\"logout.jsp\"\u003eLogout\u003c/a\u003e\n\n\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"basket.jsp\"\u003eYour Basket\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"search.jsp\"\u003eSearch\u003c/a\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003ctable width\u003d\"100%\" class\u003d\"border\"\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"left\" valign\u003d\"top\" width\u003d\"25%\"\u003e\n\u003ca href\u003d\"product.jsp?typeid\u003d6\"\u003eDoodahs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d5\"\u003eGizmos\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d3\"\u003eThingamajigs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d2\"\u003eThingies\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d7\"\u003eWhatchamacallits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d4\"\u003eWhatsits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d1\"\u003eWidgets\u003c/a\u003e\u003cbr/\u003e\r\n\n\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\n\u003c/td\u003e\n\u003ctd valign\u003d\"top\" width\u003d\"70%\"\u003e\n\n\u003ch3\u003eRegister\u003c/h3\u003e\n\u003cbr/\u003eYou have successfully registered with The BodgeIt Store.\r\n\n\t\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/center\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n\n",
+        "statusCode": 200,
+        "responseTimeInMs": 27,
+        "elementType": "ZestResponse"
+      },
+      "assertions": [
+        {
+          "rootExpression": {
+            "code": 200,
+            "not": false,
+            "elementType": "ZestExpressionStatusCode"
+          },
+          "elementType": "ZestAssertion"
+        },
+        {
+          "rootExpression": {
+            "length": 2067,
+            "approx": 1,
+            "variableName": "response.body",
+            "not": false,
+            "elementType": "ZestExpressionLength"
+          },
+          "elementType": "ZestAssertion"
+        }
+      ],
+      "followRedirects": false,
+      "cookies": [],
+      "index": 5,
+      "enabled": true,
+      "elementType": "ZestRequest"
+    },
+    {
+      "url": "http://localhost:8081/bodgeit/home.jsp",
+      "data": "",
+      "method": "GET",
+      "headers": "Proxy-Connection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n",
+      "response": {
+        "url": "http://localhost:8081/bodgeit/home.jsp",
+        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nContent-Type: text/html;charset\u003dISO-8859-1\r\nContent-Length: 3317\r\nDate: Fri, 07 Apr 2017 17:23:44 GMT\r\n\r\n",
+        "body": "\n\n\n\n\r\n\n\n\n\n\n\u003c!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\"\u003e\n\u003chtml\u003e\n\u003chead\u003e\n\u003ctitle\u003eThe BodgeIt Store\u003c/title\u003e\n\u003clink href\u003d\"style.css\" rel\u003d\"stylesheet\" type\u003d\"text/css\" /\u003e\n\u003cscript type\u003d\"text/javascript\" src\u003d\"./js/util.js\"\u003e\u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n\u003ccenter\u003e\n\u003ctable width\u003d\"80%\" class\u003d\"border\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003cH1\u003eThe BodgeIt Store\u003c/H1\u003e\n\u003ctable width\u003d\"100%\" class\u003d\\\"noborder\\\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\"\u003e\u0026nbsp;\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"40%\"\u003eWe bodge it, so you dont have to!\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\" style\u003d\"text-align: right\" \u003e\nUser: \u003ca href\u003d\"password.jsp\"\u003e\u003cscript\u003ealert(\"XSSInRegistration\");\u003c/script\u003e@gmail.com\u003c/a\u003e\r\n\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"home.jsp\"\u003eHome\u003c/a\u003e\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"about.jsp\"\u003eAbout Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"contact.jsp\"\u003eContact Us\u003c/a\u003e\u003c/td\u003e\n\u003c!-- td align\u003d\"center\" width\u003d\"16%\"\u003e\u003ca href\u003d\"admin.jsp\"\u003eAdmin\u003c/a\u003e\u003c/td--\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\n\n\t\t\u003ca href\u003d\"logout.jsp\"\u003eLogout\u003c/a\u003e\n\n\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"basket.jsp\"\u003eYour Basket\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"search.jsp\"\u003eSearch\u003c/a\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003ctable width\u003d\"100%\" class\u003d\"border\"\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"left\" valign\u003d\"top\" width\u003d\"25%\"\u003e\n\u003ca href\u003d\"product.jsp?typeid\u003d6\"\u003eDoodahs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d5\"\u003eGizmos\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d3\"\u003eThingamajigs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d2\"\u003eThingies\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d7\"\u003eWhatchamacallits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d4\"\u003eWhatsits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d1\"\u003eWidgets\u003c/a\u003e\u003cbr/\u003e\r\n\n\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\n\u003c/td\u003e\n\u003ctd valign\u003d\"top\" width\u003d\"70%\"\u003e\n\n\n\u003ch3\u003eOur Best Deals!\u003c/h3\u003e\n\u003ccenter\u003e\u003ctable border\u003d\"1\" class\u003d\"border\" width\u003d\"80%\"\u003e\r\n\u003ctr\u003e\u003cth\u003eProduct\u003c/th\u003e\u003cth\u003eType\u003c/th\u003e\u003cth\u003ePrice\u003c/th\u003e\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d22\"\u003eGZ XT4\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eGizmos\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e4,45 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d18\"\u003eWhatsit weigh\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eWhatsits\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e2,5 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d1\"\u003eBasic Widget\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eWidgets\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e1,2 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d9\"\u003eTGJ AAA\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingamajigs\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e0,9 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d29\"\u003eTipofmytongue\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eWhatchamacallits\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e3,74 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d17\"\u003eWhatsit called\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eWhatsits\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e4,1 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d14\"\u003eTGJ GGG\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingamajigs\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e2,6 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d5\"\u003eThingie 2\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingies\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e3,2 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d16\"\u003eTGJ JJJ\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingamajigs\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e0,8 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003ctr\u003e\r\n\u003ctd\u003e\u003ca href\u003d\"product.jsp?prodid\u003d5\"\u003eThingie 2\u003c/a\u003e\u003c/td\u003e\u003ctd\u003eThingies\u003c/td\u003e\u003ctd align\u003d\"right\"\u003e3,2 z?\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003c/table\u003e\u003c/center\u003e\u003cbr/\u003e\r\n\n\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/center\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n\n\n",
+        "statusCode": 200,
+        "responseTimeInMs": 20,
+        "elementType": "ZestResponse"
+      },
+      "assertions": [
+        {
+          "rootExpression": {
+            "code": 200,
+            "not": false,
+            "elementType": "ZestExpressionStatusCode"
+          },
+          "elementType": "ZestAssertion"
+        },
+        {
+          "rootExpression": {
+            "length": 3317,
+            "approx": 1,
+            "variableName": "response.body",
+            "not": false,
+            "elementType": "ZestExpressionLength"
+          },
+          "elementType": "ZestAssertion"
+        }
+      ],
+      "followRedirects": false,
+      "cookies": [],
+      "index": 6,
+      "enabled": true,
+      "elementType": "ZestRequest"
+    },
+    {
+      "rootExpression": {
+        "regex": "\\Q\u003cscript\u003ealert(\"XSSInRegistration\");\u003c/script\u003e\\E",
+        "variableName": "response.body",
+        "caseExact": false,
+        "not": false,
+        "elementType": "ZestExpressionRegex"
+      },
+      "ifStatements": [
+        {
+          "message": "XSS in registration found",
+          "priority": "HIGH",
+          "index": 8,
+          "enabled": true,
+          "elementType": "ZestActionFail"
+        }
+      ],
+      "elseStatements": [],
+      "index": 7,
+      "enabled": true,
+      "elementType": "ZestConditional"
+    }
+  ],
+  "authentication": [],
+  "index": 0,
+  "enabled": true,
+  "elementType": "ZestScript"
+}
