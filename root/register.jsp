@@ -17,15 +17,22 @@ boolean registered = false;
 
 if (request.getMethod().equals("POST") && username != null) {
 	try {
-		ESAPI.validator().getValidInput("Validating username", username, "Email", 100, false);
+		username = ESAPI.validator().getValidInput("Validating username", username, "Email", 100, false);
 		if (password1 == null || password1.length() < 5) {
 			result = "You must supply a password of at least 5 characters.";
 		} else if (password1.equals(password2)) {
-			Statement stmt = conn.createStatement();
+			PreparedStatement insertUserStmt = conn.prepareStatement("INSERT INTO Users (name, type, password) VALUES (?, 'USER', ?)");
+			PreparedStatement selectUsersStmt = conn.prepareStatement("SELECT * FROM Users WHERE (name = ? AND password = ?)");
+			PreparedStatement updateUserBasketIdStmt = conn.prepareStatement("UPDATE Users SET currentbasketid = ? WHERE userid = ?");
+			PreparedStatement updateBasketUserIdStmt = conn.prepareStatement("UPDATE Baskets SET userid = ? WHERE basketid = ?");
 			ResultSet rs = null;
 			try {
-				stmt.executeQuery("INSERT INTO Users (name, type, password) VALUES ('" + username + "', 'USER', '" + password1 + "')");
-				rs = stmt.executeQuery("SELECT * FROM Users WHERE (name = '" + username + "' AND password = '" + password1 + "')");
+				insertUserStmt.setString(1, username);
+				insertUserStmt.setString(2, password1);
+				insertUserStmt.executeQuery();
+				selectUsersStmt.setString(1, username);
+				selectUsersStmt.setString(2, password1);
+				rs = selectUsersStmt.executeQuery();
 				rs.next();
 				userid =  "" + rs.getInt("userid"); 
 	
@@ -54,8 +61,12 @@ if (request.getMethod().equals("POST") && username != null) {
 				if (basketId != null) {
 					debug +=  " userId = " + userid + " basketId = " + basketId;
 					// TODO breaks basket scoring :(
-					stmt.execute("UPDATE Users SET currentbasketid = " + basketId + " WHERE userid = " + userid);
-					stmt.execute("UPDATE Baskets SET userid = " + userid + " WHERE basketid = " + basketId);
+					updateUserBasketIdStmt.setString(1, basketId);
+					updateUserBasketIdStmt.setString(2, userid);
+					updateUserBasketIdStmt.executeQuery();		
+					updateBasketUserIdStmt.setString(1, userid);
+					updateBasketUserIdStmt.setString(2, basketId);
+					updateBasketUserIdStmt.executeQuery();
 					response.addCookie(new Cookie("b_id", ""));
 				}
 				
@@ -78,7 +89,34 @@ if (request.getMethod().equals("POST") && username != null) {
 					out.println("System error.");
 				}
 			} finally {
-				stmt.close();
+				try {
+					if (insertUserStmt != null) {
+						insertUserStmt.close();
+					}
+				} catch (Exception e) {
+					out.println("System error.");
+				}
+				try {
+					if (selectUsersStmt != null) {
+						selectUsersStmt.close();
+					}
+				} catch (Exception e) {
+					out.println("System error.");
+				}
+				try {
+					if (updateUserBasketIdStmt != null) {
+						updateUserBasketIdStmt.close();
+					}
+				} catch (Exception e) {
+					out.println("System error.");
+				}
+				try {
+					if (updateBasketUserIdStmt != null) {
+						updateBasketUserIdStmt.close();
+					}
+				} catch (Exception e) {
+					out.println("System error.");
+				}
 			}
 		} else {
 			result = "The passwords you have supplied are different.";
