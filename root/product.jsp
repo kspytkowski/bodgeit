@@ -58,6 +58,9 @@
 					" AND Products.typeid = ProductTypes.typeid");
 			rs = stmt.executeQuery();
 			out.println("<h3>Product</h3><form action=\"basket.jsp\" method=\"post\">");
+			String csrf = "" + Math.random();
+			request.getSession().setAttribute("csrf", csrf);
+			out.println("<input type=\"hidden\" id=\"csrf\" name=\"csrf\" value=\"" + csrf + "\"/>");
 			out.println("<center><table class=\"border\" width=\"80%\">");
 			out.println("<tr><th>Product</th><th>Type</th><th>Price</th><th>Quantity</th><th>Buy</th></tr>");
 			if (rs.next()) {
