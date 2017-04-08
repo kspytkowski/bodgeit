@@ -68,15 +68,19 @@ if (request.getMethod().equals("POST") && username != null) {
 		}
 	} finally {
 		try {
-	    	if (rs != null) { rs.close(); }
-	    } catch (Exception e) {
-	    	out.println("System error.");
-	    }
+			if (rs != null) {
+				rs.close();
+			}
+		} catch (Exception e) {
+			out.println("System error.");
+		}
 		try {
-	    	if (stmt != null) { stmt.close(); }
-	    } catch (Exception e) {
-	    	out.println("System error.");
-	    }
+			if (stmt != null) {
+				stmt.close();
+			}
+		} catch (Exception e) {
+			out.println("System error.");
+		}
 	}
 }
 %>
