@@ -1,3 +1,4 @@
+<%@page import="org.owasp.esapi.ESAPI"%>
 <%@ page import="java.sql.*" %>
 
 <%@ include file="/dbconnection.jspf" %>
@@ -14,18 +15,12 @@ if (request.getMethod().equals("POST") && comments != null) {
 
 	anticsrf = request.getParameter("anticsrf");
 	if (anticsrf != null && anticsrf.equals(request.getSession().getAttribute("anticsrf"))) {
-
-		// Strip script tags, because that will make everything alright...
-		comments = comments.replace("<script>", "");
-		comments = comments.replace("</script>", "");
-		// And double quotes, just to make sure
-		comments = comments.replace("\"", "");
-
+		String encodedComments = ESAPI.encoder().encodeForHTML(comments);
 		PreparedStatement stmt = conn.prepareStatement("INSERT INTO Comments (name, comment) VALUES (?, ?)");
 		ResultSet rs = null;
 		try {
 			stmt.setString(1, username);
-			stmt.setString(2, comments);
+			stmt.setString(2, encodedComments);
 			stmt.execute();
 
 			if (username == null) {
@@ -34,7 +29,7 @@ if (request.getMethod().equals("POST") && comments != null) {
 
 			out.println("<br/><p style=\"color:green\">Thank you for your feedback:</p><br/>");
 			out.println("<br/><center><table border=\"1\" width=\"80%\" class=\"border\">");
-			out.println("<tr><td>" + comments + "</td></tr>");
+			out.println("<tr><td>" + encodedComments + "</td></tr>");
 			out.println("</table></center><br/>");
 
 			return;
