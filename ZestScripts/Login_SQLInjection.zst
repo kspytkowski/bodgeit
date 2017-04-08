@@ -231,7 +231,7 @@
         },
         {
           "rootExpression": {
-            "length": 1874,
+            "length": 2521,
             "approx": 5,
             "variableName": "response.body",
             "not": false,
