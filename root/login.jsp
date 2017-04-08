@@ -9,10 +9,12 @@ String password = (String) request.getParameter("password");
 String debug = "Clear";
 
 if (request.getMethod().equals("POST") && username != null) {
-	Statement stmt = conn.createStatement();
+	PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Users WHERE (name = ? AND password = ?)");
 	ResultSet rs = null;
 	try {
-		rs = stmt.executeQuery("SELECT * FROM Users WHERE (name = '" + username + "' AND password = '" + password + "')");
+		stmt.setString(1, username);
+		stmt.setString(2, password);
+		rs = stmt.executeQuery();
 		if (rs.next()) {
 			loggedIn = true;
 			debug="Logged in";
@@ -65,10 +67,20 @@ if (request.getMethod().equals("POST") && username != null) {
 			out.println("System error.");
 		}
 	} finally {
-		if (rs != null) {
-			rs.close();
+		try {
+			if (rs != null) {
+				rs.close();
+			}
+		} catch (Exception e) {
+			out.println("System error.");
 		}
-		stmt.close();
+		try {
+			if (stmt != null) {
+				stmt.close();
+			}
+		} catch (Exception e) {
+			out.println("System error.");
+		}
 	}
 }
 %>
