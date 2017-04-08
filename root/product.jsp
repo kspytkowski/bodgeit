@@ -1,3 +1,5 @@
+<%@page import="org.owasp.esapi.reference.DefaultEncoder"%>
+<%@page import="org.owasp.esapi.ESAPI"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.math.*" %>
 <%@ page import="java.text.*" %>
@@ -58,7 +60,7 @@
 					" AND Products.typeid = ProductTypes.typeid");
 			rs = stmt.executeQuery();
 			out.println("<h3>Product</h3><form action=\"basket.jsp\" method=\"post\">");
-			String csrf = "" + Math.random();
+			String csrf = ESAPI.randomizer().getRandomString(8, DefaultEncoder.CHAR_ALPHANUMERICS);
 			request.getSession().setAttribute("csrf", csrf);
 			out.println("<input type=\"hidden\" id=\"csrf\" name=\"csrf\" value=\"" + csrf + "\"/>");
 			out.println("<center><table class=\"border\" width=\"80%\">");

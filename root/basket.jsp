@@ -1,3 +1,4 @@
+<%@page import="org.owasp.esapi.reference.DefaultEncoder"%>
 <%@page import="org.owasp.esapi.ESAPI"%>
 <%@page import="org.owasp.esapi.errors.IntrusionException"%>
 <%@page import="java.net.URL"%>
@@ -251,7 +252,7 @@ function decQuantity (prodid) {
 				" AND BasketContents.productid = Products.productid");
 		rs = stmt.executeQuery();
 		out.println("<form action=\"basket.jsp\" method=\"post\">");
-		csrf = "" + Math.random();
+		csrf = ESAPI.randomizer().getRandomString(8, DefaultEncoder.CHAR_ALPHANUMERICS);
 		request.getSession().setAttribute("csrf", csrf);
 		out.println("<input type=\"hidden\" id=\"csrf\" name=\"csrf\" value=\"" + csrf + "\"/>");
 		out.println("<table border=\"1\" class=\"border\" width=\"80%\">");
