@@ -47,7 +47,6 @@
 	} else {
 %>
 <td align="center" width="16%" BGCOLOR=#EEEEEE><a href="contact.jsp">Contact Us</a></td>
-<!-- td align="center" width="16%"><a href="admin.jsp">Admin</a></td-->
 <%
 	}
 %>
