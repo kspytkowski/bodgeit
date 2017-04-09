@@ -29,7 +29,7 @@ if (request.getMethod().equals("POST") && username != null) {
 			try {
 				insertUserStmt.setString(1, username);
 				insertUserStmt.setString(2, password1);
-				insertUserStmt.executeQuery();
+				insertUserStmt.executeUpdate();
 				selectUsersStmt.setString(1, username);
 				selectUsersStmt.setString(2, password1);
 				rs = selectUsersStmt.executeQuery();
@@ -63,10 +63,10 @@ if (request.getMethod().equals("POST") && username != null) {
 					// TODO breaks basket scoring :(
 					updateUserBasketIdStmt.setString(1, basketId);
 					updateUserBasketIdStmt.setString(2, userid);
-					updateUserBasketIdStmt.executeQuery();		
+					updateUserBasketIdStmt.executeUpdate();		
 					updateBasketUserIdStmt.setString(1, userid);
 					updateBasketUserIdStmt.setString(2, basketId);
-					updateBasketUserIdStmt.executeQuery();
+					updateBasketUserIdStmt.executeUpdate();
 					response.addCookie(new Cookie("b_id", ""));
 				}
 				
