@@ -1,3 +1,6 @@
+<%@page import="org.owasp.esapi.reference.DefaultEncoder"%>
+<%@page import="org.owasp.esapi.ESAPI"%>
+<%@page import="org.owasp.esapi.errors.IntrusionException"%>
 <%@page import="java.net.URL"%>
 <%@ page import="java.servlet.http.*" %>
 <%@ page import="java.sql.*" %>
@@ -146,6 +149,7 @@ function decQuantity (prodid) {
 
 	String update = request.getParameter("update");
 	String productId = request.getParameter("productid");
+	String csrf = request.getParameter("csrf");
 	
 	if (productId != null && request.getParameterMap().containsKey("quantity")) {
                 //Check for CSRF for Scoring by looking at the referrer
@@ -155,84 +159,91 @@ function decQuantity (prodid) {
                 if(!url.getFile().startsWith(request.getContextPath() + "/product.jsp?prodid=")){
                     conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'CSRF_BASKET'");
                 }
-                
-		// Add product
-		String quantity = request.getParameter("quantity");
-		try {
-			// Product in basket?
-			int currentQuantity = 0;
-			
-			stmt = conn.prepareStatement("SELECT * FROM BasketContents WHERE basketid=" + basketId + " AND productid = " + productId);
-			rs = stmt.executeQuery();
-			if (rs.next()) {
-                                quantity = String.valueOf(Integer.parseInt(quantity) + rs.getInt("quantity"));
-				rs.close();
-				stmt.close();
-				stmt = conn.prepareStatement("UPDATE BasketContents SET quantity = " + Integer.parseInt(quantity) + 
-						" WHERE basketid=" + basketId + " AND productid = " + productId);
-				stmt.execute();
-				if (Integer.parseInt(quantity) < 0) {
-					conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'NEG_BASKET'");
-				}
-			} else {
-				rs.close();
-				stmt.close();
-				stmt = conn.prepareStatement("SELECT * FROM Products where productid=" + productId);
+		if (csrf != null && csrf.equals(request.getSession().getAttribute("csrf"))) {
+			// Add product
+			String quantity = request.getParameter("quantity");
+			try {
+				// Product in basket?
+				int currentQuantity = 0;
+				
+				stmt = conn.prepareStatement("SELECT * FROM BasketContents WHERE basketid=" + basketId + " AND productid = " + productId);
 				rs = stmt.executeQuery();
 				if (rs.next()) {
-					Double price = rs.getDouble("price"); 
+	                                quantity = String.valueOf(Integer.parseInt(quantity) + rs.getInt("quantity"));
 					rs.close();
 					stmt.close();
-					stmt = conn.prepareStatement("INSERT INTO BasketContents (basketid, productid, quantity, pricetopay) VALUES (" +
-							basketId + ", " + productId + ", " + Integer.parseInt(quantity) + ", " + price + ")");
+					stmt = conn.prepareStatement("UPDATE BasketContents SET quantity = " + Integer.parseInt(quantity) + 
+							" WHERE basketid=" + basketId + " AND productid = " + productId);
 					stmt.execute();
 					if (Integer.parseInt(quantity) < 0) {
 						conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'NEG_BASKET'");
 					}
+				} else {
+					rs.close();
+					stmt.close();
+					stmt = conn.prepareStatement("SELECT * FROM Products where productid=" + productId);
+					rs = stmt.executeQuery();
+					if (rs.next()) {
+						Double price = rs.getDouble("price"); 
+						rs.close();
+						stmt.close();
+						stmt = conn.prepareStatement("INSERT INTO BasketContents (basketid, productid, quantity, pricetopay) VALUES (" +
+								basketId + ", " + productId + ", " + Integer.parseInt(quantity) + ", " + price + ")");
+						stmt.execute();
+						if (Integer.parseInt(quantity) < 0) {
+							conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'NEG_BASKET'");
+						}
+					}
+				}
+				out.println("Your basket had been updated.<br/>");
+			} catch (SQLException e) {
+				if ("true".equals(request.getParameter("debug"))) {
+					conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'HIDDEN_DEBUG'");
+					out.println("DEBUG System error: " + e + "<br/><br/>");
+				} else {
+					out.println("System error.");
+				}
+			} finally {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (rs != null) {
+					rs.close();
 				}
 			}
-			out.println("Your basket had been updated.<br/>");
-		} catch (SQLException e) {
-			if ("true".equals(request.getParameter("debug"))) {
-				conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'HIDDEN_DEBUG'");
-				out.println("DEBUG System error: " + e + "<br/><br/>");
-			} else {
-				out.println("System error.");
-			}
-		} finally {
-			if (stmt != null) {
-				stmt.close();
-			}
-			if (rs != null) {
-				rs.close();
-			}
+		} else {
+			out.println("<p style=\"color:red\">Intrusion detection (valid CSRF Token not found). Someone wanted to add product to Your basket!</p><br/>");	
 		}
 	} else if (update != null) {
-		// Update the basket
-		Map params = request.getParameterMap();
-		Iterator iter = params.entrySet().iterator();
-		while (iter.hasNext()) {
-			Map.Entry entry = (Map.Entry) iter.next();
-			String key = (String) entry.getKey();
-			String value = ((String[]) entry.getValue())[0];
-			if (key.startsWith("quantity_")) {
-				String prodId = key.substring(9);
-				if (value.equals("0")) {
-					stmt = conn.prepareStatement("DELETE FROM BasketContents WHERE basketid=" + basketId +
-							" AND productid = " + prodId);
-					stmt.execute();
-					stmt.close();						
-				} else {
-					stmt = conn.prepareStatement("UPDATE BasketContents SET quantity = " + Integer.parseInt(value) + " WHERE basketid=" + basketId +
-							" AND productid = " + prodId);
-					stmt.execute();
-					if (Integer.parseInt(value) < 0) {
-						conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'NEG_BASKET'");
+		if (csrf != null && csrf.equals(request.getSession().getAttribute("csrf"))) {
+			// Update the basket
+			Map params = request.getParameterMap();
+			Iterator iter = params.entrySet().iterator();
+			while (iter.hasNext()) {
+				Map.Entry entry = (Map.Entry) iter.next();
+				String key = (String) entry.getKey();
+				String value = ((String[]) entry.getValue())[0];
+				if (key.startsWith("quantity_")) {
+					String prodId = key.substring(9);
+					if (value.equals("0")) {
+						stmt = conn.prepareStatement("DELETE FROM BasketContents WHERE basketid=" + basketId +
+								" AND productid = " + prodId);
+						stmt.execute();
+						stmt.close();						
+					} else {
+						stmt = conn.prepareStatement("UPDATE BasketContents SET quantity = " + Integer.parseInt(value) + " WHERE basketid=" + basketId +
+								" AND productid = " + prodId);
+						stmt.execute();
+						if (Integer.parseInt(value) < 0) {
+							conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'NEG_BASKET'");
+						}
 					}
 				}
 			}
+			out.println("<p style=\"color:green\">Your basket had been updated.</p><br/>");
+		} else {
+			out.println("<p style=\"color:red\">Intrusion detection (valid CSRF Token not found). Someone wanted to update Your basket!</p><br/>");
 		}
-		out.println("<p style=\"color:green\">Your basket had been updated.</p><br/>");
 	}
 	
 	// Display basket
@@ -241,6 +252,9 @@ function decQuantity (prodid) {
 				" AND BasketContents.productid = Products.productid");
 		rs = stmt.executeQuery();
 		out.println("<form action=\"basket.jsp\" method=\"post\">");
+		csrf = ESAPI.randomizer().getRandomString(8, DefaultEncoder.CHAR_ALPHANUMERICS);
+		request.getSession().setAttribute("csrf", csrf);
+		out.println("<input type=\"hidden\" id=\"csrf\" name=\"csrf\" value=\"" + csrf + "\"/>");
 		out.println("<table border=\"1\" class=\"border\" width=\"80%\">");
 		out.println("<tr><th>Product</th><th>Quantity</th><th>Price</th><th>Total</th></tr>");
 		BigDecimal basketTotal = new BigDecimal(0);
