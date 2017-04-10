@@ -20,7 +20,6 @@ if (request.getMethod().equals("GET") && query != null){
 <%    
     Statement stmt = conn.createStatement();
 	ResultSet rs = null;
-	//query = StringEscapeUtils.escapeHtml4(query).replaceAll("'", "&#39");
 	try {
                 String sql = "SELECT PRODUCT, DESC, TYPE, TYPEID, PRICE " +
                              "FROM PRODUCTS AS a JOIN PRODUCTTYPES AS b " +
