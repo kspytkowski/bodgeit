@@ -1,5 +1,6 @@
 <%@page import="org.apache.commons.lang3.StringEscapeUtils"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="org.owasp.esapi.ESAPI"%>
 
 <%@ include file="/dbconnection.jspf" %>
 <jsp:include page="/header.jsp"/>
@@ -8,19 +9,18 @@
 <font size="-1">
 <%
 String query = (String) request.getParameter("q");
-
+query = ESAPI.encoder().encodeForHTML(query);
 if (request.getMethod().equals("GET") && query != null){
         if (query.replaceAll("\\s", "").toLowerCase().indexOf("<script>alert(\"xss\")</script>") >= 0) {
                 conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'SIMPLE_XSS'");
         }
-    
+        
 %>
 <b>You searched for:</b> <%= query %><br/><br/>
 <%    
     Statement stmt = conn.createStatement();
 	ResultSet rs = null;
-        query = StringEscapeUtils.escapeHtml4(query).replaceAll("'", "&#39");
-
+	//query = StringEscapeUtils.escapeHtml4(query).replaceAll("'", "&#39");
 	try {
                 String sql = "SELECT PRODUCT, DESC, TYPE, TYPEID, PRICE " +
                              "FROM PRODUCTS AS a JOIN PRODUCTTYPES AS b " +
