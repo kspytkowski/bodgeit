@@ -204,7 +204,7 @@ function decQuantity (prodid) {
 								" AND productid = " + prodId);
 						stmt.execute();
 						stmt.close();						
-					} else {
+					} else if (quantity > 0) {
 						stmt = conn.prepareStatement("UPDATE BasketContents SET quantity = " + quantity + " WHERE basketid=" + basketId +
 								" AND productid = " + prodId);
 						stmt.execute();
