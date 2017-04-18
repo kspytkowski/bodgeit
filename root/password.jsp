@@ -4,6 +4,7 @@
 <jsp:include page="/header.jsp"/>
 
 <%
+
 String username = (String) session.getAttribute("username");
 String usertype = (String) session.getAttribute("usertype");
 
@@ -17,7 +18,7 @@ if (password1 != null && password1.length() > 0) {
 		failresult = "The passwords you have supplied are different.";
 	}  else if (password1 == null || password1.length() < 5) {
 		failresult = "You must supply a password of at least 5 characters.";
-	} else {
+	} else if (!request.getMethod().equals("POST")) {
 		Statement stmt = conn.createStatement();
 		ResultSet rs = null;
 		try {
@@ -25,16 +26,13 @@ if (password1 != null && password1.length() > 0) {
 			
 			okresult = "Your password has been changed";
 
-			if (request.getMethod().equals("GET")) {
-				conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'PASSWD_GET'");
-			}
-
 		} catch (Exception e) {
 			failresult = "System error.";
 		} finally {
 			stmt.close();
 		}
-
+	} else {
+		failresult = "You cannot changed password not using POST method";
 	}
 }
 
