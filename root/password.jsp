@@ -18,7 +18,7 @@ if (password1 != null && password1.length() > 0) {
 		failresult = "The passwords you have supplied are different.";
 	}  else if (password1 == null || password1.length() < 5) {
 		failresult = "You must supply a password of at least 5 characters.";
-	} else if (!request.getMethod().equals("POST")) {
+	} else if (request.getMethod().equals("POST")) {
 		Statement stmt = conn.createStatement();
 		ResultSet rs = null;
 		try {
