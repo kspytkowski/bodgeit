@@ -6,8 +6,8 @@
      version="2.4">
 
     <servlet>
+    	<display-name>The BodgeIt Store Init Servlet</display-name>
         <servlet-name>InitServlet</servlet-name>
-        <display-name>The BodgeIt Store Init Servlet</display-name>
         <!-- servlet-class>org.zaproxy.bodgit.servlet.InitServlet</servlet-class-->
         <jsp-file>/init.jsp</jsp-file>
         <load-on-startup>1</load-on-startup>
@@ -21,6 +21,11 @@
       <welcome-file>home.jsp</welcome-file>
       <welcome-file>home.html</welcome-file>
     </welcome-file-list>
+    
+    <error-page>
+    	<exception-type>java.lang.Throwable</exception-type>
+    	<location>/error.jsp</location>
+    </error-page>
 
     <!-- error-page>
       <error-code>404</error-code>
