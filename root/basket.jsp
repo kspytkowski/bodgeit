@@ -255,12 +255,8 @@ function decQuantity (prodid) {
 		out.println("</form>");
 	
 	} catch (SQLException e) {
-		if ("true".equals(request.getParameter("debug"))) {
-			stmt.execute("UPDATE Score SET status = 1 WHERE task = 'HIDDEN_DEBUG'");
-			out.println("DEBUG System error: " + e + "<br/><br/>");
-		} else {
-			out.println("System error.");
-		}
+		ESAPI.log().error(Logger.EVENT_FAILURE, e.getLocalizedMessage());
+		out.println("System error.");
 	} finally {
 		if (stmt != null) {
 			stmt.close();
