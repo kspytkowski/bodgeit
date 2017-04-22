@@ -1,7 +1,7 @@
 {
   "about": "This is a Zest script. For more details about Zest visit https://developer.mozilla.org/en-US/docs/Zest",
   "zestVersion": "0.3",
-  "title": "AdminPage_UnauthorizedAccess",
+  "title": "AdminPage_UnauthorizedAccess.zst",
   "description": "",
   "prefix": "",
   "type": "StandAlone",
@@ -265,16 +265,6 @@
             "code": 200,
             "not": false,
             "elementType": "ZestExpressionStatusCode"
-          },
-          "elementType": "ZestAssertion"
-        },
-        {
-          "rootExpression": {
-            "length": 2038,
-            "approx": 5,
-            "variableName": "response.body",
-            "not": false,
-            "elementType": "ZestExpressionLength"
           },
           "elementType": "ZestAssertion"
         }
