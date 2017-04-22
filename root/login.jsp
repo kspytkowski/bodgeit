@@ -1,3 +1,4 @@
+<%@page import="org.owasp.esapi.ESAPI"%>
 <%@ page import="java.sql.*" %>
 
 <%@ include file="/dbconnection.jspf" %>
@@ -21,6 +22,7 @@ if (request.getMethod().equals("POST") && username != null) {
 			// We must have been given the right credentials, right? ;)
 			// Put credentials in the session
 			String userid = "" + rs.getInt("userid");
+			session = ESAPI.httpUtilities().changeSessionIdentifier(request);
 			session.setAttribute("username", rs.getString("name"));
 			session.setAttribute("userid", userid);
 			session.setAttribute("usertype", rs.getString("type"));
