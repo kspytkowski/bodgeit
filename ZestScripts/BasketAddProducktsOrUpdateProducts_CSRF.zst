@@ -1,7 +1,7 @@
 {
   "about": "This is a Zest script. For more details about Zest visit https://developer.mozilla.org/en-US/docs/Zest",
   "zestVersion": "0.3",
-  "title": "BasketAddProducktsOrUpdateProducts_CSRF",
+  "title": "BasketAddProducktsOrUpdateProducts_CSRF.zst",
   "description": "",
   "prefix": "",
   "type": "StandAlone",
@@ -130,123 +130,6 @@
       "elementType": "ZestRequest"
     },
     {
-      "url": "http://localhost:8081/bodgeit/login.jsp",
-      "data": "",
-      "method": "GET",
-      "headers": "Proxy-Connection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n",
-      "response": {
-        "url": "http://localhost:8081/bodgeit/login.jsp",
-        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nContent-Type: text/html;charset\u003dISO-8859-1\r\nContent-Length: 2349\r\nDate: Sat, 08 Apr 2017 19:08:40 GMT\r\n\r\n",
-        "body": "\n\n\r\n\n\n\n\n\n\n\n\u003c!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\"\u003e\n\u003chtml\u003e\n\u003chead\u003e\n\u003ctitle\u003eThe BodgeIt Store\u003c/title\u003e\n\u003clink href\u003d\"style.css\" rel\u003d\"stylesheet\" type\u003d\"text/css\" /\u003e\n\u003cscript type\u003d\"text/javascript\" src\u003d\"./js/util.js\"\u003e\u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n\u003ccenter\u003e\n\u003ctable width\u003d\"80%\" class\u003d\"border\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003cH1\u003eThe BodgeIt Store\u003c/H1\u003e\n\u003ctable width\u003d\"100%\" class\u003d\\\"noborder\\\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\"\u003e\u0026nbsp;\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"40%\"\u003eWe bodge it, so you dont have to!\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\" style\u003d\"text-align: right\" \u003e\nGuest user\r\n\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"home.jsp\"\u003eHome\u003c/a\u003e\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"about.jsp\"\u003eAbout Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"contact.jsp\"\u003eContact Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\n\n\t\t\u003ca href\u003d\"login.jsp\"\u003eLogin\u003c/a\u003e\n\n\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"basket.jsp\"\u003eYour Basket\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"search.jsp\"\u003eSearch\u003c/a\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003ctable width\u003d\"100%\" class\u003d\"border\"\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"left\" valign\u003d\"top\" width\u003d\"25%\"\u003e\n\u003ca href\u003d\"product.jsp?typeid\u003d6\"\u003eDoodahs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d5\"\u003eGizmos\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d3\"\u003eThingamajigs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d2\"\u003eThingies\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d7\"\u003eWhatchamacallits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d4\"\u003eWhatsits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d1\"\u003eWidgets\u003c/a\u003e\u003cbr/\u003e\r\n\n\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\n\u003c/td\u003e\n\u003ctd valign\u003d\"top\" width\u003d\"70%\"\u003e\n\n\n\u003ch3\u003eLogin\u003c/h3\u003e\nPlease enter your credentials: \u003cbr/\u003e\u003cbr/\u003e\n\u003cform method\u003d\"POST\"\u003e\n\t\u003ccenter\u003e\n\t\u003ctable\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003eUsername:\u003c/td\u003e\n\t\t\u003ctd\u003e\u003cinput id\u003d\"username\" name\u003d\"username\"/\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003ePassword:\u003c/td\u003e\n\t\t\u003ctd\u003e\u003cinput id\u003d\"password\" name\u003d\"password\" type\u003d\"password\"/\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003e\u003c/td\u003e\n\t\t\u003ctd\u003e\u003cinput id\u003d\"submit\" type\u003d\"submit\" value\u003d\"Login\"/\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003c/table\u003e\n\t\u003c/center\u003e\n\u003c/form\u003e\nIf you dont have an account with us then please \u003ca href\u003d\"register.jsp\"\u003eRegister\u003c/a\u003e now for a free account.\n\u003cbr/\u003e\u003cbr/\u003e\n\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/center\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n\n\n",
-        "statusCode": 200,
-        "responseTimeInMs": 22,
-        "elementType": "ZestResponse"
-      },
-      "assertions": [
-        {
-          "rootExpression": {
-            "code": 200,
-            "not": false,
-            "elementType": "ZestExpressionStatusCode"
-          },
-          "elementType": "ZestAssertion"
-        },
-        {
-          "rootExpression": {
-            "length": 2349,
-            "approx": 5,
-            "variableName": "response.body",
-            "not": false,
-            "elementType": "ZestExpressionLength"
-          },
-          "elementType": "ZestAssertion"
-        }
-      ],
-      "followRedirects": false,
-      "cookies": [],
-      "index": 4,
-      "enabled": true,
-      "elementType": "ZestRequest"
-    },
-    {
-      "url": "http://localhost:8081/bodgeit/register.jsp",
-      "data": "",
-      "method": "GET",
-      "headers": "Proxy-Connection: keep-alive\r\nUpgrade-Insecure-Requests: 1\r\n",
-      "response": {
-        "url": "http://localhost:8081/bodgeit/register.jsp",
-        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nContent-Type: text/html;charset\u003dISO-8859-1\r\nContent-Length: 2427\r\nDate: Sat, 08 Apr 2017 19:08:42 GMT\r\n\r\n",
-        "body": "\n\n\n\n\n\r\n\n\n\n\n\n\n\n\n\u003c!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\"\u003e\n\u003chtml\u003e\n\u003chead\u003e\n\u003ctitle\u003eThe BodgeIt Store\u003c/title\u003e\n\u003clink href\u003d\"style.css\" rel\u003d\"stylesheet\" type\u003d\"text/css\" /\u003e\n\u003cscript type\u003d\"text/javascript\" src\u003d\"./js/util.js\"\u003e\u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n\u003ccenter\u003e\n\u003ctable width\u003d\"80%\" class\u003d\"border\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003cH1\u003eThe BodgeIt Store\u003c/H1\u003e\n\u003ctable width\u003d\"100%\" class\u003d\\\"noborder\\\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\"\u003e\u0026nbsp;\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"40%\"\u003eWe bodge it, so you dont have to!\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\" style\u003d\"text-align: right\" \u003e\nGuest user\r\n\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"home.jsp\"\u003eHome\u003c/a\u003e\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"about.jsp\"\u003eAbout Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"contact.jsp\"\u003eContact Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\n\n\t\t\u003ca href\u003d\"login.jsp\"\u003eLogin\u003c/a\u003e\n\n\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"basket.jsp\"\u003eYour Basket\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"search.jsp\"\u003eSearch\u003c/a\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003ctable width\u003d\"100%\" class\u003d\"border\"\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"left\" valign\u003d\"top\" width\u003d\"25%\"\u003e\n\u003ca href\u003d\"product.jsp?typeid\u003d6\"\u003eDoodahs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d5\"\u003eGizmos\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d3\"\u003eThingamajigs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d2\"\u003eThingies\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d7\"\u003eWhatchamacallits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d4\"\u003eWhatsits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d1\"\u003eWidgets\u003c/a\u003e\u003cbr/\u003e\r\n\n\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\n\u003c/td\u003e\n\u003ctd valign\u003d\"top\" width\u003d\"70%\"\u003e\n\n\u003ch3\u003eRegister\u003c/h3\u003e\n\n\nPlease enter the following details to register with us: \u003cbr/\u003e\u003cbr/\u003e\n\u003cform method\u003d\"POST\"\u003e\n\t\u003ccenter\u003e\n\t\u003ctable\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003eUsername (your email address):\u003c/td\u003e\n\t\t\u003ctd\u003e\u003cinput id\u003d\"username\" name\u003d\"username\"\u003e\u003c/input\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003ePassword:\u003c/td\u003e\n\t\t\u003ctd\u003e\u003cinput id\u003d\"password1\" name\u003d\"password1\" type\u003d\"password\"\u003e\u003c/input\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003eConfirm Password:\u003c/td\u003e\n\t\t\u003ctd\u003e\u003cinput id\u003d\"password2\" name\u003d\"password2\" type\u003d\"password\"\u003e\u003c/input\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003ctr\u003e\n\t\t\u003ctd\u003e\u003c/td\u003e\n\t\t\u003ctd\u003e\u003cinput id\u003d\"submit\" type\u003d\"submit\" value\u003d\"Register\"\u003e\u003c/input\u003e\u003c/td\u003e\n\t\u003c/tr\u003e\n\t\u003c/table\u003e\n\t\u003c/center\u003e\n\u003c/form\u003e\n\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/center\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n\n\n",
-        "statusCode": 200,
-        "responseTimeInMs": 10,
-        "elementType": "ZestResponse"
-      },
-      "assertions": [
-        {
-          "rootExpression": {
-            "code": 200,
-            "not": false,
-            "elementType": "ZestExpressionStatusCode"
-          },
-          "elementType": "ZestAssertion"
-        },
-        {
-          "rootExpression": {
-            "length": 2427,
-            "approx": 5,
-            "variableName": "response.body",
-            "not": false,
-            "elementType": "ZestExpressionLength"
-          },
-          "elementType": "ZestAssertion"
-        }
-      ],
-      "followRedirects": false,
-      "cookies": [],
-      "index": 5,
-      "enabled": true,
-      "elementType": "ZestRequest"
-    },
-    {
-      "url": "http://localhost:8081/bodgeit/register.jsp",
-      "data": "username\u003dstupidUser%40gmail.com\u0026password1\u003dpassword\u0026password2\u003dpassword",
-      "method": "POST",
-      "headers": "Proxy-Connection: keep-alive\r\nContent-Length: 69\r\nOrigin: http://localhost:8081\r\nUpgrade-Insecure-Requests: 1\r\nContent-Type: application/x-www-form-urlencoded\r\n",
-      "response": {
-        "url": "http://localhost:8081/bodgeit/register.jsp",
-        "headers": "HTTP/1.1 200 OK\r\nServer: Apache-Coyote/1.1\r\nContent-Type: text/html;charset\u003dISO-8859-1\r\nContent-Length: 1964\r\nDate: Sat, 08 Apr 2017 19:09:41 GMT\r\n\r\n",
-        "body": "\n\n\n\n\n\r\n\n\n\n\n\n\n\n\n\u003c!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\"\u003e\n\u003chtml\u003e\n\u003chead\u003e\n\u003ctitle\u003eThe BodgeIt Store\u003c/title\u003e\n\u003clink href\u003d\"style.css\" rel\u003d\"stylesheet\" type\u003d\"text/css\" /\u003e\n\u003cscript type\u003d\"text/javascript\" src\u003d\"./js/util.js\"\u003e\u003c/script\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n\u003ccenter\u003e\n\u003ctable width\u003d\"80%\" class\u003d\"border\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003cH1\u003eThe BodgeIt Store\u003c/H1\u003e\n\u003ctable width\u003d\"100%\" class\u003d\\\"noborder\\\"\u003e\n\u003ctr BGCOLOR\u003d#C3D9FF\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\"\u003e\u0026nbsp;\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"40%\"\u003eWe bodge it, so you dont have to!\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"30%\" style\u003d\"text-align: right\" \u003e\nUser: \u003ca href\u003d\"password.jsp\"\u003estupidUser@gmail.com\u003c/a\u003e\r\n\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"home.jsp\"\u003eHome\u003c/a\u003e\u003c/td\u003e\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"about.jsp\"\u003eAbout Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"contact.jsp\"\u003eContact Us\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\n\n\t\t\u003ca href\u003d\"logout.jsp\"\u003eLogout\u003c/a\u003e\n\n\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"basket.jsp\"\u003eYour Basket\u003c/a\u003e\u003c/td\u003e\n\n\u003ctd align\u003d\"center\" width\u003d\"16%\" BGCOLOR\u003d#EEEEEE\u003e\u003ca href\u003d\"search.jsp\"\u003eSearch\u003c/a\u003e\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"center\" colspan\u003d\"6\"\u003e\n\u003ctable width\u003d\"100%\" class\u003d\"border\"\u003e\n\u003ctr\u003e\n\u003ctd align\u003d\"left\" valign\u003d\"top\" width\u003d\"25%\"\u003e\n\u003ca href\u003d\"product.jsp?typeid\u003d6\"\u003eDoodahs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d5\"\u003eGizmos\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d3\"\u003eThingamajigs\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d2\"\u003eThingies\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d7\"\u003eWhatchamacallits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d4\"\u003eWhatsits\u003c/a\u003e\u003cbr/\u003e\r\n\u003ca href\u003d\"product.jsp?typeid\u003d1\"\u003eWidgets\u003c/a\u003e\u003cbr/\u003e\r\n\n\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\u003cbr/\u003e\n\u003c/td\u003e\n\u003ctd valign\u003d\"top\" width\u003d\"70%\"\u003e\n\n\u003ch3\u003eRegister\u003c/h3\u003e\n\u003cbr/\u003eYou have successfully registered with The BodgeIt Store.\r\n\n\t\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/table\u003e\n\u003c/center\u003e\n\u003c/body\u003e\n\u003c/html\u003e\n\n",
-        "statusCode": 200,
-        "responseTimeInMs": 89,
-        "elementType": "ZestResponse"
-      },
-      "assertions": [
-        {
-          "rootExpression": {
-            "code": 200,
-            "not": false,
-            "elementType": "ZestExpressionStatusCode"
-          },
-          "elementType": "ZestAssertion"
-        },
-        {
-          "rootExpression": {
-            "length": 1964,
-            "approx": 5,
-            "variableName": "response.body",
-            "not": false,
-            "elementType": "ZestExpressionLength"
-          },
-          "elementType": "ZestAssertion"
-        }
-      ],
-      "followRedirects": false,
-      "cookies": [],
-      "index": 6,
-      "enabled": true,
-      "elementType": "ZestRequest"
-    },
-    {
       "url": "http://localhost:8081/bodgeit/basket.jsp?productid\u003d3\u0026price\u003d4.7\u0026quantity\u003d2",
       "data": "",
       "method": "GET",
@@ -281,7 +164,7 @@
       ],
       "followRedirects": false,
       "cookies": [],
-      "index": 7,
+      "index": 4,
       "enabled": true,
       "elementType": "ZestRequest"
     },
@@ -297,7 +180,7 @@
         {
           "message": "CSRF detected - an intruder added a product to someone\u0027s basket",
           "priority": "HIGH",
-          "index": 9,
+          "index": 5,
           "enabled": true,
           "elementType": "ZestActionFail"
         }
@@ -342,7 +225,7 @@
       ],
       "followRedirects": false,
       "cookies": [],
-      "index": 10,
+      "index": 6,
       "enabled": true,
       "elementType": "ZestRequest"
     },
@@ -358,7 +241,7 @@
         {
           "message": "CSRF detected - an intruder has updated someone\u0027s basket",
           "priority": "HIGH",
-          "index": 12,
+          "index": 7,
           "enabled": true,
           "elementType": "ZestActionFail"
         }
