@@ -1,3 +1,4 @@
+<%@page import="org.owasp.esapi.Logger"%>
 <%@page import="org.owasp.esapi.errors.IntrusionException"%>
 <%@page import="org.owasp.esapi.errors.ValidationException"%>
 <%@ page import="org.owasp.esapi.ESAPI"%>
@@ -122,8 +123,10 @@ if (request.getMethod().equals("POST") && username != null) {
 			result = "The passwords you have supplied are different.";
 		}
 	} catch (ValidationException e) {
+		ESAPI.log().error(Logger.SECURITY_FAILURE, e.getLogMessage());
 		result = e.getUserMessage();
  	} catch (IntrusionException ie) {
+ 		ESAPI.log().error(Logger.SECURITY_FAILURE, ie.getLogMessage());
  		result = ie.getUserMessage();
  	}
 }
