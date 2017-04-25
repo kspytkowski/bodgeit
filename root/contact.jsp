@@ -1,3 +1,4 @@
+<%@page import="org.owasp.esapi.Logger"%>
 <%@page import="org.owasp.esapi.ESAPI"%>
 <%@ page import="java.sql.*" %>
 
@@ -16,6 +17,9 @@ if (request.getMethod().equals("POST") && comments != null) {
 	anticsrf = request.getParameter("anticsrf");
 	if (anticsrf != null && anticsrf.equals(request.getSession().getAttribute("anticsrf"))) {
 		String encodedComments = ESAPI.encoder().encodeForHTML(comments);
+		if (!comments.equals(encodedComments)) {
+			ESAPI.log().error(Logger.SECURITY_FAILURE, "Possible XSS in user comment: " + comments); 
+		}
 		PreparedStatement stmt = conn.prepareStatement("INSERT INTO Comments (name, comment) VALUES (?, ?)");
 		ResultSet rs = null;
 		try {

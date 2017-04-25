@@ -185,6 +185,7 @@ function decQuantity (prodid) {
 				}
 			}
 		} else {
+			ESAPI.log().error(Logger.SECURITY_FAILURE, "CSRF attack found (adding product to basket)");
 			out.println("<p style=\"color:red\">Intrusion detection (valid CSRF Token not found). Someone wanted to add product to Your basket!</p><br/>");	
 		}
 	} else if (update != null) {
@@ -213,6 +214,7 @@ function decQuantity (prodid) {
 			}
 			out.println("<p style=\"color:green\">Your basket had been updated.</p><br/>");
 		} else {
+			ESAPI.log().error(Logger.SECURITY_FAILURE, "CSRF attack found (updating basket)");
 			out.println("<p style=\"color:red\">Intrusion detection (valid CSRF Token not found). Someone wanted to update Your basket!</p><br/>");
 		}
 	}

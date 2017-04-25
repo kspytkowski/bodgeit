@@ -46,9 +46,17 @@
 	<target name="deploy-jsps">
 		<copy toDir="${deploy.dir}/bodgeit">
 			<fileset dir="root">
+				<include name="*" />
+				<include name="**/*" />
+				<include name="**/**/*" />
 				<include name="*.jsp" />
 				<include name="*.css" />
 				<include name="**/*.png" />
+			</fileset>
+		</copy>
+		<copy toDir="${deploy.dir}/bodgeit/WEB-INF/classes">
+			<fileset dir="root/WEB-INF">
+				<include name="log4j.xml" />
 			</fileset>
 		</copy>
 	</target>

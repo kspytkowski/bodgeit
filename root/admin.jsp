@@ -1,3 +1,5 @@
+<%@page import="org.owasp.esapi.Logger"%>
+<%@page import="org.owasp.esapi.ESAPI"%>
 <%@ page import="java.sql.*" %>
 
 <%@ include file="/dbconnection.jspf" %>
@@ -61,6 +63,7 @@
 			}
 		}
 	} else {
+		ESAPI.log().error(Logger.SECURITY_FAILURE, "Unauthorized attempt to see admin page"); 
 		out.println("<h3>You are not allowed to see this page</h3>");
 	}
 %>
