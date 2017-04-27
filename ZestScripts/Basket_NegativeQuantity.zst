@@ -1,7 +1,7 @@
 {
   "about": "This is a Zest script. For more details about Zest visit https://developer.mozilla.org/en-US/docs/Zest",
   "zestVersion": "0.3",
-  "title": "Basket_NegativeQuantity.zst",
+  "title": "Basket_NegativeQuantity",
   "description": "A template standalone script",
   "prefix": "",
   "type": "StandAlone",
@@ -66,7 +66,7 @@
         {
           "rootExpression": {
             "length": 3443,
-            "approx": 1,
+            "approx": 5,
             "variableName": "response.body",
             "not": false,
             "elementType": "ZestExpressionLength"
@@ -145,7 +145,7 @@
         {
           "rootExpression": {
             "length": 3436,
-            "approx": 1,
+            "approx": 5,
             "variableName": "response.body",
             "not": false,
             "elementType": "ZestExpressionLength"
@@ -195,7 +195,7 @@
         {
           "rootExpression": {
             "length": 3401,
-            "approx": 1,
+            "approx": 5,
             "variableName": "response.body",
             "not": false,
             "elementType": "ZestExpressionLength"
