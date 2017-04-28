@@ -63,6 +63,7 @@
 			}
 		}
 	} else {
+		ESAPI.intrusionDetector().addEvent("adminViolation", "Attempt of unauthorized access to admin page");
 		ESAPI.log().error(Logger.SECURITY_FAILURE, "Unauthorized attempt to see admin page"); 
 		out.println("<h3>You are not allowed to see this page</h3>");
 	}

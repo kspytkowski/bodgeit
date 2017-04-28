@@ -17,7 +17,8 @@ if (request.getMethod().equals("POST") && username != null) {
 	String encodedPassword = ESAPI.encoder().encodeForSQL(oracleCodec, password);
 	if (!username.equals(encodedUsername) || !password.equals(encodedPassword)) {
 		ESAPI.log().error(Logger.SECURITY_FAILURE, 
-				"Possible SQL Injection in login form - username: '" + username + "' password:'" + password + "'"); 
+				"Possible SQL Injection in login form - username: '" + username + "' password:'" + password + "'");
+		ESAPI.intrusionDetector().addEvent("loginSQLInjection", "Possible SQL Injection in login form - username: '" + username + "' password:'" + password + "'");
 	}
 	PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Users WHERE (name = ? AND password = ?)");
 	ResultSet rs = null;

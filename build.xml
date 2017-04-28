@@ -24,13 +24,14 @@
 
 	<!-- Compile all of the source code -->
 	<target name="compile">
+		<mkdir dir="build/WEB-INF/classes" />
 		<!-- Compile the java code -->
 		<javac target="1.5" destdir="build/WEB-INF/classes" srcdir="src" classpathref="java.classpath" />
 	</target>
 
 	<target name="build" depends="compile">
 		<copy toDir="build"><fileset dir="root" includes="**/*"/></copy>
-
+		<copy file="root/WEB-INF/log4j.xml" tofile="build/WEB-INF/classes/log4j.xml" />
 		<delete file="build/bodgeit.war"/>
 		
 		<war destfile="build/bodgeit.war" webxml="root/WEB-INF/web.xml">

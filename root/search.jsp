@@ -1,3 +1,4 @@
+<%@page import="org.owasp.esapi.Logger"%>
 <%@page import="org.apache.commons.lang3.StringEscapeUtils"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="org.owasp.esapi.ESAPI"%>
@@ -9,11 +10,11 @@
 <font size="-1">
 <%
 String query = (String) request.getParameter("q");
-query = ESAPI.encoder().encodeForHTML(query);
+String encodedQuery = ESAPI.encoder().encodeForHTML(query);
 if (request.getMethod().equals("GET") && query != null){
-        if (query.replaceAll("\\s", "").toLowerCase().indexOf("<script>alert(\"xss\")</script>") >= 0) {
-                conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'SIMPLE_XSS'");
-        }
+	if (!query.equals(encodedQuery)) {
+		ESAPI.intrusionDetector().addEvent("searchXSS", "Possible XSS in user comment");
+	}
         
 %>
 <b>You searched for:</b> <%= query %><br/><br/>
@@ -51,13 +52,8 @@ if (request.getMethod().equals("GET") && query != null){
                 } else {   
                     out.println("<div><b>No Results Found</b></div>");
                 }
-        } catch (Exception e) {
-		if ("true".equals(request.getParameter("debug"))) {
-			stmt.execute("UPDATE Score SET status = 1 WHERE task = 'HIDDEN_DEBUG'");
-			out.println("DEBUG System error: " + e + "<br/><br/>");
-		} else {
-			out.println("System error.");
-		}
+       } catch (Exception e) {
+       	ESAPI.log().error(Logger.EVENT_FAILURE, e.getLocalizedMessage());
 	} finally {
 		if (rs != null) {
 			rs.close();
