@@ -115,7 +115,7 @@
         {
           "rootExpression": {
             "length": 473,
-            "approx": 5,
+            "approx": 15,
             "variableName": "response.body",
             "not": false,
             "elementType": "ZestExpressionLength"
