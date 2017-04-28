@@ -17,22 +17,24 @@ if (request.getMethod().equals("GET") && query != null){
 	}
         
 %>
-<b>You searched for:</b> <%= query %><br/><br/>
+<b>You searched for:</b> <%= encodedQuery %><br/><br/>
 <%    
-    Statement stmt = conn.createStatement();
-	ResultSet rs = null;
+    ResultSet rs;
 	try {
                 String sql = "SELECT PRODUCT, DESC, TYPE, TYPEID, PRICE " +
                              "FROM PRODUCTS AS a JOIN PRODUCTTYPES AS b " +
                              "ON a.TYPEID = b.TYPEID " +
-                             "WHERE PRODUCT LIKE '%" + query + "%' OR " + 
-                             "DESC LIKE '%" + query + "%' OR PRICE LIKE '%" + query + "%' " +
-                             "OR TYPE LIKE '%" + query + "%'";
-                
-                if ("true".equals(request.getParameter("debug")))
-                    out.println(sql);
-		rs = stmt.executeQuery(sql);
-              
+                             "WHERE PRODUCT LIKE ? OR " + 
+                             "DESC LIKE ? OR PRICE LIKE ? " +
+                             "OR TYPE LIKE ?";
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                String queryWildcarded = "%" + encodedQuery + "%";
+                stmt.setString(1, queryWildcarded);
+                stmt.setString(2, queryWildcarded);
+                stmt.setString(3, queryWildcarded);
+                stmt.setString(4, queryWildcarded);
+				rs = stmt.executeQuery();
+				
                 int count = 0;
                 String output = "";
                 while (rs.next()) {
@@ -52,14 +54,11 @@ if (request.getMethod().equals("GET") && query != null){
                 } else {   
                     out.println("<div><b>No Results Found</b></div>");
                 }
-       } catch (Exception e) {
-       	ESAPI.log().error(Logger.EVENT_FAILURE, e.getLocalizedMessage());
-	} finally {
-		if (rs != null) {
-			rs.close();
-		}
-		stmt.close();
-	}
+                rs.close();
+                stmt.close();
+       	} catch (Exception e) {
+       		ESAPI.log().error(Logger.EVENT_FAILURE, e.getLocalizedMessage());
+		} 
 } else {
 %>
 <FORM name='query' method='GET'>
