@@ -13,10 +13,6 @@
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			if (session == null || ! "admin@thebodgeitstore.com".equals(session.getAttribute("username"))) {
-				conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'HIDDEN_ADMIN'");
-			} 
-			
 			stmt = conn.prepareStatement("SELECT * FROM Users");
 			rs = stmt.executeQuery();
 			out.println("<br/><center><table class=\"border\" width=\"80%\">");
@@ -63,7 +59,7 @@
 			}
 		}
 	} else {
-		ESAPI.intrusionDetector().addEvent("adminViolation", "Attempt of unauthorized access to admin page");
+		ESAPI.intrusionDetector().addEvent("adminUnauthorizedAccess", "Attempt of unauthorized access to admin page");
 		ESAPI.log().error(Logger.SECURITY_FAILURE, "Unauthorized attempt to see admin page"); 
 		out.println("<h3>You are not allowed to see this page</h3>");
 	}

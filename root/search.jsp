@@ -13,7 +13,7 @@ String query = (String) request.getParameter("q");
 String encodedQuery = ESAPI.encoder().encodeForHTML(query);
 if (request.getMethod().equals("GET") && query != null){
 	if (!query.equals(encodedQuery)) {
-		ESAPI.intrusionDetector().addEvent("searchXSS", "Possible XSS in user comment");
+		ESAPI.intrusionDetector().addEvent("searchXSS", "Possible XSS in user comment: " + query);
 	}
         
 %>
