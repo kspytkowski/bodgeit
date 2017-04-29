@@ -1,0 +1,19 @@
+[
+  {
+    "_id": "9cee52c0-2c5b-11e7-a045-25f0c225b9b7",
+    "_type": "dashboard",
+    "_source": {
+      "title": "BodgeIt intrusion events",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"size_x\":6,\"size_y\":3,\"panelIndex\":1,\"type\":\"visualization\",\"id\":\"928b0580-2c5b-11e7-a045-25f0c225b9b7\",\"col\":1,\"row\":1},{\"size_x\":6,\"size_y\":3,\"panelIndex\":2,\"type\":\"visualization\",\"id\":\"f3fa5ec0-2c5a-11e7-b606-4179017dd8bc\",\"col\":7,\"row\":1}]",
+      "optionsJSON": "{\"darkTheme\":false}",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"highlightAll\":true,\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
+      }
+    }
+  }
+]
