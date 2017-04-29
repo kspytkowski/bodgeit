@@ -1,3 +1,5 @@
+<%@page import="org.owasp.esapi.Logger"%>
+<%@page import="org.owasp.esapi.ESAPI"%>
 <%@ page import="java.sql.*" %>
 
 <%@ include file="/dbconnection.jspf" %>
@@ -37,6 +39,8 @@ if (request.getMethod().equals("POST")) {
 		failresult = "You cannot have empty password";
 	}
 } else {
+	ESAPI.intrusionDetector().addEvent("passwordNotPOST", "User " + username + " tried to change password not using form");
+	ESAPI.log().warning(Logger.SECURITY_AUDIT, "User " + username + " tried to change password not using form");
 	failresult = "You cannot change password not using POST method";
 }
 

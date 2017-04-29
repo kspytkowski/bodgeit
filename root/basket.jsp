@@ -63,6 +63,7 @@ function decQuantity (prodid) {
 				if ((userid == null && !bUserId.equals("0")) || (userid != null && !userid.equals(bUserId))) {
 					basketId = "-1";
 					ESAPI.intrusionDetector().addEvent("basketIdChanged", "Cookie poisoning detected - basket id in cookie is not coupled with logged user");
+					ESAPI.log().error(Logger.SECURITY_FAILURE, "Cookie poisoning detected - basket id in cookie is not coupled with logged user");
 				}
 			}
 		} catch (Exception e) {
@@ -86,7 +87,6 @@ function decQuantity (prodid) {
 		} catch (Exception e) {
 			ESAPI.log().error(Logger.EVENT_FAILURE, e.getLocalizedMessage());
 			return;
-
 		} finally {
 			stmt.close();
 		}
@@ -176,6 +176,7 @@ function decQuantity (prodid) {
 				}
 				if (quantity < 0) {
 					ESAPI.intrusionDetector().addEvent("basketNegativeQuantity", "Request alternating detected - negative quantity of basket");
+					ESAPI.log().error(Logger.SECURITY_FAILURE, "Request alternating detected - negative quantity of basket");
 				}
 				out.println("Your basket had been updated.<br/>");
 			} catch (SQLException e) {
