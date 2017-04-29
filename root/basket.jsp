@@ -62,7 +62,7 @@ function decQuantity (prodid) {
 				String bUserId = String.valueOf(rs.getInt("userid"));
 				if ((userid == null && !bUserId.equals("0")) || (userid != null && !userid.equals(bUserId))) {
 					basketId = "-1";
-					ESAPI.intrusionDetector().addEvent("basketIdChanged", "Cookie poisoning detected - basket id in cookie is not coupled with logged user");
+					ESAPI.intrusionDetector().addEvent("basketIdChangedCookiePoisoning", "Cookie poisoning detected - basket id in cookie is not coupled with logged user");
 				}
 			}
 		} catch (Exception e) {
@@ -190,7 +190,7 @@ function decQuantity (prodid) {
 			}
 		} else {
 			ESAPI.log().error(Logger.SECURITY_FAILURE, "CSRF attack found (adding product to basket)");
-			ESAPI.intrusionDetector().addEvent("basketCSRF", "Detected CSRF attack on basket page");
+			ESAPI.intrusionDetector().addEvent("basketAddProductCSRF", "Detected CSRF attack on basket page");
 			out.println("<p style=\"color:red\">Intrusion detection (valid CSRF Token not found). Someone wanted to add product to Your basket!</p><br/>");	
 		}
 	} else if (update != null) {
@@ -220,7 +220,7 @@ function decQuantity (prodid) {
 			out.println("<p style=\"color:green\">Your basket had been updated.</p><br/>");
 		} else {
 			ESAPI.log().error(Logger.SECURITY_FAILURE, "CSRF attack found (updating basket)");
-			ESAPI.intrusionDetector().addEvent("basketCSRF", "Detected CSRF attack on basket page");
+			ESAPI.intrusionDetector().addEvent("basketUpdateCSRF", "Detected CSRF attack on basket page");
 			out.println("<p style=\"color:red\">Intrusion detection (valid CSRF Token not found). Someone wanted to update Your basket!</p><br/>");
 		}
 	}

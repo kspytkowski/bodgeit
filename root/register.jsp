@@ -40,7 +40,6 @@ if (request.getMethod().equals("POST") && username != null) {
 				session.setAttribute("username", username);
 				session.setAttribute("usertype", "USER");
 				session.setAttribute("userid", userid);
-	
 				
 				if (username.replaceAll("\\s", "").toLowerCase().indexOf("<script>alert(\"xss\")</script>") >= 0) {
 					conn.createStatement().execute("UPDATE Score SET status = 1 WHERE task = 'XSS_USER'");
@@ -61,7 +60,6 @@ if (request.getMethod().equals("POST") && username != null) {
 				}
 				if (basketId != null) {
 					debug +=  " userId = " + userid + " basketId = " + basketId;
-					// TODO breaks basket scoring :(
 					updateUserBasketIdStmt.setString(1, basketId);
 					updateUserBasketIdStmt.setString(2, userid);
 					updateUserBasketIdStmt.executeUpdate();		
@@ -127,7 +125,8 @@ if (request.getMethod().equals("POST") && username != null) {
 		result = e.getUserMessage();
  	} catch (IntrusionException ie) {
  		ESAPI.log().error(Logger.SECURITY_FAILURE, ie.getLogMessage());
- 		result = ie.getUserMessage();
+ 		ESAPI.intrusionDetector().addEvent("registrationXSS", "Possible XSS in registration: " + username);
+		result = ie.getUserMessage();
  	}
 }
 %>
